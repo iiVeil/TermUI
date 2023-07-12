@@ -3,7 +3,11 @@ import math
 
 
 class Position:
-    """Uses a tuple to create a better positioning object
+    """Custom positioning object, very barebones and simple.
+
+    Supports addition and subtraction between other positioning objects.
+
+    And a custom .half() method which returns half of the position rounded down.
     """
 
     def __init__(self, x: int = 0, y: int = 0, xypair: tuple = None):

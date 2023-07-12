@@ -1,3 +1,4 @@
+import curses
 from .position import Position
 
 
@@ -12,6 +13,7 @@ class Element:
         self.start = start
         self.hidden = False
         self.end = None
+        self.size = None
         self.color = -1
         self.callback = None
         self.data = {}
@@ -42,4 +44,35 @@ class Element:
             string (str): The string to add
             options (int, optional): Other options: color, formatting, etc. Defaults to 0.
         """
+        if y >= curses.LINES-1 or x >= curses.COLS-1:
+            return
         self.region.ui.window.addstr(y, x, string, options)
+
+    def move(self, position: Position):
+        """Move a element
+
+        Args:
+            position (Position): The new position
+        """
+        self.start = position
+        self.end = position + self.size
+        self.calc_pack()
+
+    def resize(self, position: Position):
+        """Resize a element
+
+        Args:
+            position (Position): The new size.
+        """
+        self.size = position
+        self.end = position + self.start
+        self.calc_pack()
+
+    def calc_pack(self):
+        """Recalculate an elements relative placement packing."""
+        self.pack = {
+            "right": Position(
+                self.size.x+self.start.x+1, self.start.y),
+            "down": Position(self.start.x, self.start.y+self.size.y+1),
+            "up": Position(self.start.x, self.start.y-1)
+        }

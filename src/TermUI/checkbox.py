@@ -1,72 +1,92 @@
 import curses
-from enum import Enum
+from curses import color_pair
+
 from .position import Position
+from .text import Text
 from .element import Element
-from .button import ButtonCharacters
 
 
 class Checkbox(Element):
 
-    def __init__(self, checked: bool, position: Position):
+    def __init__(self, checked: bool, position: Position, callback=lambda _: ()):
         super().__init__(position)
         self.checked = checked
-        self.colors = [161, 156]
-        self.size = Position(2, 1)
-        self.pack = {
-            "right": Position(
-                self.size.x+position.x+1, position.y),
-            "down": Position(position.x, position.y+self.size.y+1),
-            "up": Position(position.x, position.y-1)
-        }
+        "Whether its checked or not"
+        self.colors = [204, 156]
+        "[Off, On] colors respectively. Feel free to change them."
+        self.callback = callback
+        "The method to call when the checkbox is clicked."
+        self.spacing = False
+        "Is it spaced?"
+        self.calc_size()
+
+    @property
+    def color(self):
+        "Returns a color_pair color code, depending on what state the checkbox is in [Off, On]. The setter for this does nothing."
+        return self.colors[self.checked]
+
+    @color.setter
+    def color(self, value):
+        return
+
+    def calc_size(self):
+        """Recalculate an elements relative placement packing."""
+        self.size = Position(3, 1)
+        if self.spacing:
+            self.size += Position(2, 0)
+        self.end = self.start + self.size
+        self.calc_pack()
+
+    def spaced(self, spacing: bool):
+        """Controls whether there is space around the x in the checkbox.
+
+        [ x ] True
+        [x] False - Default
+        Args:
+            spacing (bool): Whether to space the checkbox.
+        """
+        self.spacing = spacing
+        self.calc_size()
+
+    def event_mask(self, *args):
+        """An event mask for allowing other elements click events to interact with this checkbox. 
+
+        This should only be used as a callback for another element.
+
+        Useful for making labels.
+        """
+        self.click()
 
     def draw(self):
+        """Draw this text to the screen.
 
+        This will do nothing if you do not add it to a region using Region().add_element()..
+        """
         if self.region is None or self.hidden:
             return
-        self.color = self.colors[self.checked]
-        # * Initialize the corners of the checkbox
+        color = self.colors[self.checked]
+        options = color_pair(color)
+
+        checkbox = [
+            "[",
+            "x" if self.checked else " ",
+            "]"
+        ]
+        if self.spacing:
+            checkbox.insert(1, " ")
+            checkbox.insert(3, " ")
+
         self.addstr(self.start.y, self.start.x,
-                    ButtonCharacters.TOPLEFT.value if not self.checked else FilledBox.TOP_LEFT.value, curses.color_pair(self.color))
-        self.addstr(self.start.y, self.end.x,
-                    ButtonCharacters.TOPRIGHT.value if not self.checked else FilledBox.TOP_RIGHT.value, curses.color_pair(self.color))
-        self.addstr(self.end.y, self.start.x,
-                    ButtonCharacters.BOTTOMLEFT.value if not self.checked else FilledBox.BOTTOM_LEFT.value, curses.color_pair(self.color))
-        self.addstr(self.end.y, self.end.x,
-                    ButtonCharacters.BOTTOMRIGHT.value if not self.checked else FilledBox.BOTTOM_RIGHT.value, curses.color_pair(self.color))
-
-        # * Vertical lines
-        for iy in range(self.end.y-self.start.y):
-            if 0 < iy < self.end.y:
-                self.addstr(iy+self.start.y, self.start.x,
-                            ButtonCharacters.VERTICAL.value if not self.checked else FilledBox.VERTICAL_LEFT.value, curses.color_pair(self.color))
-                self.addstr(
-                    iy+self.start.y, self.end.x,
-                    ButtonCharacters.VERTICAL.value if not self.checked else FilledBox.VERTICAL_RIGHT.value, curses.color_pair(self.color))
-
-        # * Horizontal lines
-        for ix in range(self.end.x-self.start.x):
-            if 0 < ix < self.end.x:
-                self.addstr(self.start.y, ix+self.start.x,
-                            ButtonCharacters.HORIZONTAL.value if not self.checked else FilledBox.HORIZONTAL_TOP.value, curses.color_pair(self.color))
-                self.addstr(
-                    self.end.y, ix+self.start.x,
-                    ButtonCharacters.HORIZONTAL.value if not self.checked else FilledBox.HORIZONTAL_BOTTOM.value, curses.color_pair(self.color))
+                    "".join(checkbox), options)
 
     def click(self):
+        """What happens when the checkbox is clicked
+
+        This will do nothing if you do not add it to a region using Region.add_region().
+        """
         if self.region is None or self.hidden:
             return
         self.checked = not self.checked
         if self.callback is not None:
             self.callback(self)
         self.region.ui.draw()
-
-
-class FilledBox(Enum):
-    BOTTOM_RIGHT = "▘"
-    BOTTOM_LEFT = "▝"
-    TOP_LEFT = "▗"
-    TOP_RIGHT = "▖"
-    VERTICAL_LEFT = "▐"
-    VERTICAL_RIGHT = "▌"
-    HORIZONTAL_TOP = "▄"
-    HORIZONTAL_BOTTOM = "▀"

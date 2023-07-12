@@ -101,6 +101,7 @@ class UI:
         self.draw()
 
     def get_clickable(self, position: Position):
+        # I am sorry.
         for region in self.regions:
             if region.inBounds(position):
                 for element in region.elements:
@@ -134,7 +135,7 @@ class UI:
         * * Draw the current UI to the terminal
         """
         if self.active:
-            self.window.refresh()
             self.window.clear()
+            self.window.refresh()
             for region in self.regions:
                 region.draw()

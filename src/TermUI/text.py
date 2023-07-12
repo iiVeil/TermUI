@@ -8,14 +8,14 @@ class Text(Element):
     def __init__(self, content: str, position: Position):
         super().__init__(position)
         self.text = content
+        "The text displayed and stored."
         self.size = Position(len(content), 0)
-        self.pack = {
-            "right": Position(
-                self.size.x+position.x+1, position.y),
-            "down": Position(position.x, position.y+self.size.y+1),
-            "up": Position(position.x, position.y-1)
-        }
+        "The calculated size of the text."
+        self.end = self.start + self.size
+        "The position of the last character in the text."
         self.underlined = False
+        "Whether the text should be underlined."
+        self.calc_pack()
 
     def set_text(self, text: str):
         """Set the text of the current text element and update its size, this will not redraw the text element.
@@ -30,12 +30,13 @@ class Text(Element):
         self.end = self.start + self.size
 
     def click(self):
-        """What to do when the text is clicked (if Text().clickable is True)
+        """What happens when the text is clicked (if there is a callback on the element)
 
         This will do nothing if you do not add it to a region using Region.add_region().
         """
         if self.region is not None or self.hidden:
-            self.callback(self)
+            if self.callback is not None:
+                self.callback(self)
 
     def draw(self):
         """Draw this text to the screen.

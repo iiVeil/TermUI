@@ -8,18 +8,18 @@ class Button(Element):
     def __init__(self, text: str, position: Position, callback):
         super().__init__(position)
         self.text = text
+        "The text contained in the button."
         self.framed = True
+        "Whether the buttons borders are drawn. Defaults to True"
         self.clicked = False
+        "This property functions as a checkbox really. Defaults to False."
         self.highlight = "><"
+        "The highlights around the text to make it look clickable. Defaults to >Text<"
         self.size = Position(len(self.text)+2, 1) + Position(1, 1)
-        self.pack = {
-            "right": Position(
-                self.size.x+position.x+1, position.y),
-            "down": Position(position.x, position.y+self.size.y+1),
-            "up": Position(position.x, position.y-1)
-        }
-        self.occupies = None
+        "The calculated size of the button based on text and position."
         self.callback = callback
+        "The method to run when the button is clicked. Sends the Button as an argument."
+        self.calc_pack()
 
     def set_text(self, text: str):
         """Set the text of the button and resize it, this will not redraw the button.
@@ -87,7 +87,7 @@ class Button(Element):
 
         This will do nothing if you do not add it to a region using Region().add_element()..
         """
-        if self.region is None:
+        if self.region is None or self.hidden:
             return
         self.clicked = not self.clicked
         self.callback(self)

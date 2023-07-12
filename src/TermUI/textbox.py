@@ -13,22 +13,30 @@ class Textbox(Element):
     def __init__(self, placeholder: str, position: Position, size: Position):
         super().__init__(position)
         self.placeholder = placeholder
+        "The placeholder inside the textbox"
         self.placeholder_active = True
-        self.size = ((size) - Position(1, 1)) + Position(0, 3)
-        self.pack = {
-            "up": Position(position.x, position.y-1),
-            "down": Position(position.x, position.y+self.size.y+1),
-            "right": Position(
-                self.size.x+position.x+1, position.y)}
+        "Show the placeholder?"
+        self.size = (Position(size.x, 0) - Position(1, 1)) + Position(0, 3)
+        "The size of the textbox. The height will always be the same. You get to control the width."
         self.callback = 1
+        "The callback this textbox should use when you click on it. This shouldnt be needed. Here for consistency."
         self.on_enter = None
+        "The callback for when you hit the enter key while focused. Sends with 1 argument `callback(textbox)`."
         self.on_input = None
+        "The callback for when you enter a key while focused. Sends with 2 arguments `callback(textbox, chr())`"
         self.placeholder_color = 243
+        "The color of the placeholder text in a color_pair int."
         self.maxchars = self.size.x - 4
+        "The calculated max characters to fit inside this textbox with no horizontal scrolling applied."
         self.char_limit = 0
+        "The limit for allowed chars in this textbox. Defaults to 0 or Infinite."
         self.password = False
+        "Will obscure the text in the box with asterisks if True."
         self.text = ""
+        "The text inside the textbox."
         self.display = self.text
+        "What text the textbox is currently displaying."
+        self.calc_pack()
 
     def reset(self):
         """Reset the text in the texbox, display and content
@@ -157,7 +165,6 @@ class Textbox(Element):
                 position = Position(mx, my)
                 if not self.in_bounds(position):
                     curses.curs_set(0)
-                    yield {"display": ''.join(["*" for _ in string]) if self.password else string, "cursor": -1, "content": string}
                     self.region.ui.get_clickable(position)
                     return
             else:
@@ -171,7 +178,7 @@ class Textbox(Element):
                     if len(string) > self.maxchars:
                         cursor = self.maxchars+2
                     if self.on_input is not None:
-                        self.on_input(chr(key))
+                        self.on_input(self, chr(key))
                     yield data
 
 

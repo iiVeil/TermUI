@@ -10,26 +10,31 @@ class Region:
     count = 0
 
     def __init__(self, title: str, position: Position, size: Position):
-        self.id = Region.count
         self.ui = None
+        "The UI its contained in."
         self.start = position
+        "The top left corner."
         self.size = size-Position(1, 1)
+        "The length / width of the region as a Position object."
         self.end = position + (size-Position(1, 1))
+        "The bottom right corner."
         self.color = -1
-        self.pack = {
-            "right": Position(
-                self.size.x+position.x+1, position.y),
-            "down": Position(position.x, position.y+self.size.y+1),
-            "up": Position(position.x, position.y-self.size.y)
-        }
+        "The color of the region. Defaults to the UI color."
         self.text = title
-        self.framed, self.visible = True, True
+        "The title at the top of the region."
+        self.framed = True
+        "Whether the regions borders are drawn. Defaults to True"
+        self.visible = True
+        "Whether the region is draw at all. Defaults to true."
         self.elements = []
+        "The elements in the region. Only manipulate this if you know what you are doing."
         self.sOrigin = Position(
             self.start.x+1, self.start.y+1)
+        "The relative starting location (inside the top left corner.)"
         self.eOrigin = Position(
             self.end.x-1, self.end.y-1)
-        Region.count += 1
+        "The relative ending location (inside the bottom right corner.)"
+        self.calc_pack()
 
     def set_text(self, text: str):
         """Change the name of this region
@@ -41,6 +46,35 @@ class Region:
         """
         self.text = text
 
+    def move(self, position: Position):
+        """Move a element
+
+        Args:
+            position (Position): The new position
+        """
+        self.start = position
+        self.end = position + self.size
+        self.calc_pack()
+
+    def resize(self, position: Position):
+        """Resize a element
+
+        Args:
+            position (Position): The new size.
+        """
+        self.size = position
+        self.end = position + self.start
+        self.calc_pack()
+
+    def calc_pack(self):
+        """Recalculate the regions relative placement packing."""
+        self.pack = {
+            "right": Position(
+                self.size.x+self.start.x+1, self.start.y),
+            "down": Position(self.start.x, self.start.y+self.size.y+1),
+            "up": Position(self.start.x, self.start.y-self.size.y)
+        }
+
     def draw(self):
         """Draw this region to the screen.
 
@@ -48,15 +82,6 @@ class Region:
         """
 
         if self.ui is None:
-            return
-
-        if self.size.x+1 >= 120 or self.size.y+1 >= 30:
-            self.error(
-                "You cant go above the dimensions (120 columns , 30 rows). If you need more screenspace, make another UI!\nSorry for this inconvience terminals are inconsistent with columns and rows.")
-            return
-        if curses.COLS < 120 or curses.LINES < 30:
-            self.error(
-                f"UI is too large for your current terminal size.\nPlease resize your terminals rows and columns at or above 134 columns and 34 rows and restart the program.")
             return
 
         # * Initialize the corners of the box
@@ -119,6 +144,8 @@ class Region:
             string (str): The string to add
             options (int, optional): Other options: color, formatting, etc. Defaults to 0.
         """
+        if y >= curses.LINES-1 or x >= curses.COLS-1:
+            return
         self.ui.window.addstr(y, x, string, options)
 
     def error(self, text: str):
