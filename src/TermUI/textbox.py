@@ -103,25 +103,28 @@ class Textbox(Element):
         """
         if self.region is None or self.hidden:
             return
+        # calculate the starting cursor position based on the length of the text.
         cursor = len(self.text) + \
             1 if len(self.text) <= self.maxchars else self.maxchars+2
         self.region.ui.window.move(
             self.start.y+1, cursor+self.start.x+1)
+        # make the cursor visible
         curses.curs_set(1)
-        for string in self.__get_user_input(string=self.text, cursor=cursor):
-            self.text, self.display = string["content"], string["display"]
+        for data in self.__get_user_input(string=self.text, cursor=cursor):
+            # Create the generator.
+            self.text, self.display = data["content"], data["display"]
 
             self.addstr(self.start.y+1, self.start.x + 2,
                         self.display, self.color)
-            if string["cursor"] > 0:
+            if data["cursor"] > 0:
                 self.region.ui.window.move(
-                    self.start.y+1, string["cursor"]+self.start.x+1)
+                    self.start.y+1, data["cursor"]+self.start.x+1)
             else:
                 curses.curs_set(0)
             self.region.ui.draw()
 
     def __get_user_input(self, string: str = '', cursor: int = 0):
-        """A generator for getting user input and compiling it to a string. backspace, enter, and lost focus on click supported
+        """A generator for getting user input and compiling it to a string. backspace, enter, delete key,  and lost focus on click supported
 
         Args:
             string (str, optional): The string to start the generator with. Defaults to ''.
