@@ -10,6 +10,8 @@ class UI:
     count = 0
     screen_initialized = False
     last_button_clicked = 0
+    clickable_cooldown = 300
+    "The amount of the time in milliseconds between registered clicks. default is 300"
 
     @staticmethod
     def init_screen():
@@ -105,8 +107,8 @@ class UI:
         for region in self.regions:
             if region.inBounds(position):
                 for element in region.elements:
-                    if element.in_bounds(position):
-                        if element.callback is not None:
+                    if element.callback is not None:
+                        if element.in_bounds(position):
                             UI.last_button_clicked = time.time()*1000
                             element.click()
 
@@ -119,7 +121,7 @@ class UI:
             event = self.window.getch()
             if event == curses.KEY_MOUSE:
                 _, mx, my, _, _ = curses.getmouse()
-                if time.time()*1000 - UI.last_button_clicked >= 300:
+                if time.time()*1000 - UI.last_button_clicked >= UI.clickable_cooldown:
                     position = Position(mx, my)
                     self.get_clickable(position)
             if event == curses.KEY_RESIZE:
