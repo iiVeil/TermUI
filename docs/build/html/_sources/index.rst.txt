@@ -3,18 +3,34 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to TermUI's documentation!
-==================================
+
+TermUI
+------------------------
+
+pyTermUI or just TermUI is a rapid development terminal user interface library for python command-line interface applications.
+
+TermUI is meant to be barebones by design, giving the developer control of everything outside of the drawing and interaction of the elements themselves.
+
+
+
+Features
+---------------------
+* User element support:
+    * Buttons
+    * Checkboxes
+    * User input boxes (textboxes)
+    * Interactable Text
+* Color support
+* Runs on any modern terminal
+* Multi UI support
+
+
+
+Getting started with TermUI
+-----------------------------
+
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
