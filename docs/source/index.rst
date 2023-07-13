@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 
-TermUI
+Introduction to TermUI
 ------------------------
 
 pyTermUI or just TermUI is a rapid development terminal user interface library for python command-line interface applications.
@@ -29,11 +29,30 @@ Features
 Getting started with TermUI
 -----------------------------
 
-TermUI is not on the Python Package Index.
+.. toctree::
+   :maxdepth: 5
+   :caption: Quickstart:
 
-``pip install TermUI``
+   basics.rst
+   createanapp.rst
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 5
+   :caption: UI:
 
+   ui.rst
+   region.rst
+   position.rst
+   colors.rst
+   packing.rst
+
+
+.. toctree::
+   :maxdepth: 5
+   :caption: Elements:
+
+   element.rst
+   text.rst
+   button.rst
+   checkbox.rst
+   textbox.rst

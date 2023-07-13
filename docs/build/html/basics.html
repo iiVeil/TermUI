@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Basics &mdash; TermUI 1.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Text Object" href="text.html" />
+    <link rel="prev" title="Introduction to TermUI" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            TermUI
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quickstart:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#object-hierarchy-and-structure">Object Hierarchy and Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-ui">The UI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#regions">Regions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#elements">Elements</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="text.html">The Text Object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="button.html">The Button</a></li>
+<li class="toctree-l4"><a class="reference internal" href="checkbox.html">The Checkbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="textbox.html">The Textbox</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#your-next-steps">Your Next Steps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ui.html">The UI</a></li>
+<li class="toctree-l4"><a class="reference internal" href="region.html">The Region</a></li>
+<li class="toctree-l4"><a class="reference internal" href="position.html">Positioning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="colors.html">Coloring</a></li>
+<li class="toctree-l4"><a class="reference internal" href="element.html">The Basic Element</a></li>
+<li class="toctree-l4"><a class="reference internal" href="text.html">The Text Object</a></li>
+<li class="toctree-l4"><a class="reference internal" href="button.html">The Button</a></li>
+<li class="toctree-l4"><a class="reference internal" href="checkbox.html">The Checkbox</a></li>
+<li class="toctree-l4"><a class="reference internal" href="textbox.html">The Textbox</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="createanapp.html">Create your first app</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ui.html">The UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="region.html">The Region</a></li>
+<li class="toctree-l1"><a class="reference internal" href="position.html">Positioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colors.html">Coloring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packing.html">Packing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Elements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="element.html">The Basic Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">The Text Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="button.html">The Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checkbox.html">The Checkbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textbox.html">The Textbox</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TermUI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">The Basics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/basics.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-basics">
+<h1>The Basics<a class="headerlink" href="#the-basics" title="Permalink to this heading"></a></h1>
+<p>Every TermUI app will start with the same but small boilerplate.</p>
+<p>This guide will walk you through that boilerplate and more  basics of TermUI; Create a UI, a Region, and finally add an element to the region.</p>
+<section id="object-hierarchy-and-structure">
+<h2>Object Hierarchy and Structure<a class="headerlink" href="#object-hierarchy-and-structure" title="Permalink to this heading"></a></h2>
+<p>In TermUI the three main objects, UI, Region, and Elements have a hierarchy; Its important to understand how it effects the UI you are making.</p>
+<section id="the-ui">
+<h3>The UI<a class="headerlink" href="#the-ui" title="Permalink to this heading"></a></h3>
+<p>Very simply, the UI is the foundation of your program; You can have multiple of these, but only one can be activate at a time.</p>
+<p>The UI controls how and when regions inside of it are interacted with as well as the drawing of each frame.</p>
+<p>Lets create some basic boilerplate for a TermUI app:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">from</span> <span class="nn">TermUI.ui</span> <span class="kn">import</span> <span class="n">UI</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">stdscr</span><span class="p">):</span>
+
+    <span class="n">ui</span> <span class="o">=</span> <span class="n">UI</span><span class="p">(</span><span class="n">stdscr</span><span class="p">)</span>  <span class="c1"># create our main ui</span>
+
+    <span class="c1"># other UI components</span>
+
+    <span class="n">ui</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span> <span class="c1"># activate the ui loop, this should always be the last line.</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">wrapper</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If you dont understand whats going on with the <code class="docutils literal notranslate"><span class="pre">curses.wrapper()</span></code> thats okay!
+TermUI was built around curses and uses it for drawing to the screen. In about 99% of your apps, you will never have to write curses code.</p>
+</section>
+<section id="regions">
+<h3>Regions<a class="headerlink" href="#regions" title="Permalink to this heading"></a></h3>
+<p>The Region is the home of your elements (buttons, text, textboxes, and checkboxes.).</p>
+<p>It sits inside of the UI object and acts as a positioning layer between your elements and the UI loop.</p>
+<p>To use a region, we have to add it to the UI object using <code class="docutils literal notranslate"><span class="pre">UI().add_region()</span></code></p>
+<p>Lets expand on our boilerplate from the UI section:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">from</span> <span class="nn">TermUI.ui</span> <span class="kn">import</span> <span class="n">UI</span>
+<span class="kn">from</span> <span class="nn">TermUI.region</span> <span class="kn">import</span> <span class="n">Region</span>
+<span class="kn">from</span> <span class="nn">TermUI.position</span> <span class="kn">import</span> <span class="n">Position</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">stdscr</span><span class="p">):</span>
+    <span class="n">ui</span> <span class="o">=</span> <span class="n">UI</span><span class="p">(</span><span class="n">stdscr</span><span class="p">)</span>  <span class="c1"># create our main ui</span>
+    <span class="n">region</span> <span class="o">=</span> <span class="n">Region</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;A cool name!&quot;</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="n">Position</span><span class="o">.</span><span class="n">ORIGIN</span><span class="p">(),</span> <span class="n">size</span><span class="o">=</span><span class="n">Position</span><span class="o">.</span><span class="n">DEFAULT_TERM_SIZE</span><span class="p">())</span>
+    <span class="c1"># create our region</span>
+
+    <span class="n">ui</span><span class="o">.</span><span class="n">add_region</span><span class="p">(</span><span class="n">region</span><span class="p">)</span> <span class="c1"># add the region to the ui</span>
+    <span class="n">ui</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span> <span class="c1"># activate the ui loop, this should always be the last line.</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">wrapper</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="simple">
+<dt>For now, you dont have to understand positioning, but for clarities sake:</dt><dd><ul class="simple">
+<li><p>Position.ORIGIN() = Position(0, 0) = Top left corner of the parent object.</p></li>
+<li><p>Position.DEFAULT_TERM_SIZE() = Position(108, 28) = The default terminal size for most modern operating systems.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="elements">
+<h3>Elements<a class="headerlink" href="#elements" title="Permalink to this heading"></a></h3>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="text.html">The Text Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="button.html">The Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checkbox.html">The Checkbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textbox.html">The Textbox</a></li>
+</ul>
+</div>
+<p>Elements are the things you interact with.</p>
+<p>To use an element, we have to add it to the Region object using <code class="docutils literal notranslate"><span class="pre">Region().add_element()</span></code></p>
+<p>Lets add a piece of text to our code:</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">from</span> <span class="nn">TermUI.ui</span> <span class="kn">import</span> <span class="n">UI</span>
+<span class="kn">from</span> <span class="nn">TermUI.region</span> <span class="kn">import</span> <span class="n">Region</span>
+<span class="kn">from</span> <span class="nn">TermUI.text</span> <span class="kn">import</span> <span class="n">Text</span>
+<span class="kn">from</span> <span class="nn">TermUI.position</span> <span class="kn">import</span> <span class="n">Position</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">stdscr</span><span class="p">):</span>
+    <span class="n">ui</span> <span class="o">=</span> <span class="n">UI</span><span class="p">(</span><span class="n">stdscr</span><span class="p">)</span>  <span class="c1"># create our main ui</span>
+    <span class="n">region</span> <span class="o">=</span> <span class="n">Region</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;A cool name!&quot;</span><span class="p">,</span>
+                <span class="n">position</span><span class="o">=</span><span class="n">Position</span><span class="o">.</span><span class="n">ORIGIN</span><span class="p">(),</span> <span class="n">size</span><span class="o">=</span><span class="n">Position</span><span class="o">.</span><span class="n">DEFAULT_TERM_SIZE</span><span class="p">())</span>
+    <span class="c1"># create our region with the default terminal size for most operating systems.</span>
+    <span class="c1"># Position.ORIGIN() = Position(0,0)</span>
+    <span class="c1"># Position.DEFAULT_TERM_SIZE() = Position(108, 28)</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;My first element!&quot;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">Position</span><span class="o">.</span><span class="n">ORIGIN</span><span class="p">())</span>
+    <span class="c1"># create our text element, with the text &quot;My first element!&quot;</span>
+    <span class="c1"># and place it at the origin or (0,0) of the region.</span>
+    <span class="c1"># Position.ORIGIN() = Position(0,0)</span>
+
+    <span class="n">region</span><span class="o">.</span><span class="n">add_element</span><span class="p">(</span><span class="n">text</span><span class="p">)</span> <span class="c1"># add the text to our region.</span>
+
+    <span class="n">ui</span><span class="o">.</span><span class="n">add_region</span><span class="p">(</span><span class="n">region</span><span class="p">)</span> <span class="c1"># add the region to the ui</span>
+    <span class="n">ui</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span> <span class="c1"># activate the ui loop, this should always be the last line.</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">wrapper</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="your-next-steps">
+<h3>Your Next Steps<a class="headerlink" href="#your-next-steps" title="Permalink to this heading"></a></h3>
+<p>Learn about the UI, Regions, and Positioning object:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ui.html">The UI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ui.html#creation">Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui.html#properties">Properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#instance">Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ui.html#class">Class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ui.html#methods">Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui.html#overdrawing">Overdrawing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ui.html#understanding-the-ui-loop">Understanding the UI loop</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="region.html">The Region</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="region.html#properties">Properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="region.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="region.html#methods">Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="region.html#id1">Instance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="position.html">Positioning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="position.html#creation">Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="position.html#properties">Properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="position.html#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="position.html#methods">Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="position.html#id1">Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="position.html#class">Class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="position.html#notable-features">Notable Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="position.html#centering-elements">Centering Elements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="colors.html">Coloring</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="colors.html#available-color-integers">Available Color integers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colors.html#using-color">Using Color</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Learn about the Elements and how they can interact with each other:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="element.html">The Basic Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">The Text Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="button.html">The Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checkbox.html">The Checkbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textbox.html">The Textbox</a></li>
+</ul>
+</div>
+<p>Lastly, <a class="reference internal" href="createanapp.html"><span class="doc">Create your first app</span></a>!</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Introduction to TermUI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="text.html" class="btn btn-neutral float-right" title="The Text Object" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, iiVeil.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Packing &mdash; TermUI 1.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Create your first app" href="createanapp.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            TermUI
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quickstart:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">The Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="createanapp.html">Create your first app</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ui.html">The UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="region.html">The Region</a></li>
+<li class="toctree-l1"><a class="reference internal" href="position.html">Positioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colors.html">Coloring</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Packing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#using-an-objects-pack-dictionary">Using an objects pack dictionary</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Elements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="element.html">The Basic Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">The Text Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="button.html">The Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checkbox.html">The Checkbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textbox.html">The Textbox</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TermUI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Packing</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/packing.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="packing">
+<h1>Packing<a class="headerlink" href="#packing" title="Permalink to this heading"></a></h1>
+<p>Packing is a useful feature that allows you to place regions and elements directly beside each other without having to handle their coordinates seperately.</p>
+<section id="using-an-objects-pack-dictionary">
+<h2>Using an objects pack dictionary<a class="headerlink" href="#using-an-objects-pack-dictionary" title="Permalink to this heading"></a></h2>
+<p>This is a snippet of code from our <a class="reference internal" href="createanapp.html"><span class="doc">Create your first app</span></a> document.</p>
+<p>Lets explore whats really happening here.</p>
+<p><code class="docutils literal notranslate"><span class="pre">checkbox</span> <span class="pre">=</span> <span class="pre">Checkbox(checked=False,</span> <span class="pre">position=Position(region.size.half().x-3,</span> <span class="pre">region.size.half().y))</span></code></p>
+<p>When we create our checkbox, we are placing it at the center of the region it is contained in.</p>
+<p>Once we place the checkbox its starting and ending position are calculated and from that we can create coordinates on the edge easily.</p>
+<dl class="simple">
+<dt>These “created” coordinates are stored in the <code class="docutils literal notranslate"><span class="pre">pack</span></code> dictionary:</dt><dd><ul class="simple">
+<li><p>The output from the checkboxes pack dictionary should be used as coordinates to another element in the same region, to place it beside it.</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">pack.get(&quot;up&quot;)</span></code> - The coordinate directly above the top left corner.</dt><dd><ul>
+<li><p>To pack an object above another object, its position will need to be subtracted by its height <code class="docutils literal notranslate"><span class="pre">Position(0,</span> <span class="pre">size.y)</span></code> to fit it properly.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pack.get(&quot;right&quot;)</span></code> - The coordinate directly to the right of the top right corner.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pack.get(&quot;down&quot;)</span></code> - The coordinate directly below the bottom left corner.</p></li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">pack.get(&quot;left&quot;)</span></code> - The coordinate directly to the left of the top left corner.</dt><dd><ul>
+<li><p>To pack an object to the left another object, its position will need to be subtracted by its width <code class="docutils literal notranslate"><span class="pre">Position(size.x,</span> <span class="pre">0)</span></code> to fit it properly.</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+<p>Lets see it in action.</p>
+<p><code class="docutils literal notranslate"><span class="pre">label</span> <span class="pre">=</span> <span class="pre">Text(content=&quot;A</span> <span class="pre">label&quot;,</span> <span class="pre">position=checkbox.pack.get(&quot;right&quot;))</span></code></p>
+<p>You can see in the <code class="docutils literal notranslate"><span class="pre">position</span></code> argument, we are using the pack dictionary to retrieve those coordinates.</p>
+<p>When packing below or to the right, no changes will need to be made based on size like we do when pack above and to the left.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="createanapp.html" class="btn btn-neutral float-left" title="Create your first app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, iiVeil.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create your first app &mdash; TermUI 1.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Packing" href="packing.html" />
+    <link rel="prev" title="The Basic Element" href="element.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            TermUI
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quickstart:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="basics.html">The Basics</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Create your first app</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ui.html">The UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="region.html">The Region</a></li>
+<li class="toctree-l1"><a class="reference internal" href="position.html">Positioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colors.html">Coloring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packing.html">Packing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Elements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="element.html">The Basic Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">The Text Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="button.html">The Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checkbox.html">The Checkbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textbox.html">The Textbox</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TermUI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Create your first app</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/createanapp.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="create-your-first-app">
+<h1>Create your first app<a class="headerlink" href="#create-your-first-app" title="Permalink to this heading"></a></h1>
+<dl class="simple">
+<dt>This app is very basic, but introduces you to some core concepts:</dt><dd><ul class="simple">
+<li><p>Callbacks; <a class="reference internal" href="element.html"><span class="doc">The Basic Element</span></a></p></li>
+<li><p>Dynamic Updating</p></li>
+<li><p>Relative Positioning; <a class="reference internal" href="position.html"><span class="doc">Positioning</span></a></p></li>
+<li><p>Event Masking, allowing clicks on element A to act like a click on element B; <a class="reference internal" href="element.html"><span class="doc">The Basic Element</span></a></p></li>
+<li><p>Changing colors; <a class="reference internal" href="colors.html"><span class="doc">Coloring</span></a></p></li>
+<li><p>Centering objects in a region using <code class="docutils literal notranslate"><span class="pre">Region().size.half()</span></code>; <a class="reference internal" href="position.html"><span class="doc">Positioning</span></a></p></li>
+<li><p>Element Packing, a shorthand for placing elements directly next to another element; <a class="reference internal" href="element.html"><span class="doc">The Basic Element</span></a></p></li>
+</ul>
+</dd>
+</dl>
+<p>This app does away with <code class="docutils literal notranslate"><span class="pre">Position.ORIGIN()</span></code> and <code class="docutils literal notranslate"><span class="pre">Position.DEFAULT_TERM_SIZE()</span></code> to show how low-level positioning works. If you prefer the named classmethods, feel free to use them.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">from</span> <span class="nn">TermUI.ui</span> <span class="kn">import</span> <span class="n">UI</span>
+<span class="kn">from</span> <span class="nn">TermUI.region</span> <span class="kn">import</span> <span class="n">Region</span>
+<span class="kn">from</span> <span class="nn">TermUI.checkbox</span> <span class="kn">import</span> <span class="n">Checkbox</span>
+<span class="kn">from</span> <span class="nn">TermUI.position</span> <span class="kn">import</span> <span class="n">Position</span>
+<span class="kn">from</span> <span class="nn">TermUI.text</span> <span class="kn">import</span> <span class="n">Text</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">stdscr</span><span class="p">):</span>
+
+    <span class="k">def</span> <span class="nf">on_checkbox</span><span class="p">(</span><span class="n">checkbox</span><span class="p">):</span>
+        <span class="c1"># what should happen when this checkbox is clicked?</span>
+        <span class="n">label</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">checkbox</span><span class="o">.</span><span class="n">color</span>
+        <span class="c1"># set the label color to the checkbox color.</span>
+
+    <span class="n">ui</span> <span class="o">=</span> <span class="n">UI</span><span class="p">(</span><span class="n">stdscr</span><span class="p">)</span>  <span class="c1"># create our main ui</span>
+
+    <span class="n">region</span> <span class="o">=</span> <span class="n">Region</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s2">&quot;A cool name&quot;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">Position</span><span class="p">(</span>
+        <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">Position</span><span class="p">(</span><span class="mi">108</span><span class="p">,</span> <span class="mi">28</span><span class="p">))</span>  <span class="c1"># create our region at 0,0 (top left corner)</span>
+    <span class="c1"># Position(108, 28) is the default terminal screen size</span>
+
+    <span class="n">checkbox</span> <span class="o">=</span> <span class="n">Checkbox</span><span class="p">(</span><span class="n">checked</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">Position</span><span class="p">(</span>
+        <span class="n">region</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">half</span><span class="p">()</span><span class="o">.</span><span class="n">x</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">region</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">half</span><span class="p">()</span><span class="o">.</span><span class="n">y</span><span class="p">))</span>
+    <span class="c1"># Center the checkbox inside of the region.</span>
+
+    <span class="n">checkbox</span><span class="o">.</span><span class="n">callback</span> <span class="o">=</span> <span class="n">on_checkbox</span>
+    <span class="c1"># Point the checkboxes callback at the on_checkbox method.</span>
+
+
+    <span class="n">label</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="n">content</span><span class="o">=</span><span class="s2">&quot;A label&quot;</span><span class="p">,</span> <span class="n">position</span><span class="o">=</span><span class="n">checkbox</span><span class="o">.</span><span class="n">pack</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;right&quot;</span><span class="p">))</span>
+    <span class="c1"># Notice how am I not specifying coordinates here, the pack dictionary has them for me</span>
+    <span class="c1"># since I have already placed my checkbox.</span>
+
+    <span class="n">label</span><span class="o">.</span><span class="n">callback</span> <span class="o">=</span> <span class="n">checkbox</span><span class="o">.</span><span class="n">event_mask</span>
+    <span class="c1"># Make the label click act as a checkbox click.</span>
+
+    <span class="n">label</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">checkbox</span><span class="o">.</span><span class="n">color</span>
+    <span class="c1"># set the label color to the checkbox color.</span>
+
+    <span class="n">region</span><span class="o">.</span><span class="n">add_element</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">region</span><span class="o">.</span><span class="n">add_element</span><span class="p">(</span><span class="n">checkbox</span><span class="p">)</span>
+
+    <span class="n">ui</span><span class="o">.</span><span class="n">add_region</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+    <span class="n">ui</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">wrapper</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="element.html" class="btn btn-neutral float-left" title="The Basic Element" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="packing.html" class="btn btn-neutral float-right" title="Packing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, iiVeil.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

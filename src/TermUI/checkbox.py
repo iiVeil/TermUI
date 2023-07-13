@@ -48,15 +48,6 @@ class Checkbox(Element):
         self.spacing = spacing
         self.calc_size()
 
-    def event_mask(self, *args):
-        """An event mask for allowing other elements click events to interact with this checkbox. 
-
-        This should only be used as a callback for another element.
-
-        Useful for making labels.
-        """
-        self.click()
-
     def draw(self):
         """Draw this text to the screen.
 
@@ -89,4 +80,3 @@ class Checkbox(Element):
         self.checked = not self.checked
         if self.callback is not None:
             self.callback(self)
-        self.region.ui.draw()

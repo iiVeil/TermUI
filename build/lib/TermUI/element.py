@@ -76,3 +76,12 @@ class Element:
             "down": Position(self.start.x, self.start.y+self.size.y+1),
             "up": Position(self.start.x, self.start.y-1)
         }
+
+    def event_mask(self, *args):
+        """An event mask for allowing other elements click events to emulate a click on this element. 
+
+        This should only be used as a callback for another element.
+
+        Useful for making labels.
+        """
+        self.click()

@@ -1,10 +1,10 @@
 [project]
 name = "TermUI"
-version = "1.1.0"
+version = "1.1.2"
 authors = [
   { name="iiVeil", email="email@email.com" },
 ]
-description = "A interactable UI library built on curses"
+description = "TermUI is a rapid development user interface library for python command-line interface applications."
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [
@@ -12,3 +12,7 @@ classifiers = [
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
 ]
+
+
+[project.urls]
+"Homepage" = "https://github.com/iiVeil/TermUi"

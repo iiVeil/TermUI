@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Region &mdash; TermUI 1.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Positioning" href="position.html" />
+    <link rel="prev" title="The UI" href="ui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            TermUI
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quickstart:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">The Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="createanapp.html">Create your first app</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ui.html">The UI</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Region</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Instance</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="position.html">Positioning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colors.html">Coloring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packing.html">Packing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Elements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="element.html">The Basic Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">The Text Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="button.html">The Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checkbox.html">The Checkbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textbox.html">The Textbox</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TermUI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="basics.html">The Basics</a></li>
+      <li class="breadcrumb-item active">The Region</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/region.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="the-region">
+<h1>The Region<a class="headerlink" href="#the-region" title="Permalink to this heading"></a></h1>
+<p>The Region is the home of your elements. It handles their positioning and drawing.</p>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading"></a></h2>
+<section id="instance">
+<h3>Instance<a class="headerlink" href="#instance" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ui:</span> <span class="pre">UI</span></code> - The UI the region is contained in.</p>
+<p><code class="docutils literal notranslate"><span class="pre">start:</span> <span class="pre">Position</span></code> - Contains the <code class="docutils literal notranslate"><span class="pre">Position</span></code> object representing the top left corner of the region.</p>
+<p><code class="docutils literal notranslate"><span class="pre">size:</span> <span class="pre">Position</span></code> - Contains the <code class="docutils literal notranslate"><span class="pre">Position</span></code> object representing the size of the region.</p>
+<p><code class="docutils literal notranslate"><span class="pre">pack:</span> <span class="pre">dict</span></code> - A dictionary containing <code class="docutils literal notranslate"><span class="pre">Position</span></code> objects containing the coordinates required to place the object above, below, and to the right of the region.</p>
+<p><code class="docutils literal notranslate"><span class="pre">end:</span> <span class="pre">Position</span></code> - Contains the <code class="docutils literal notranslate"><span class="pre">Position</span></code> object representing the bottom right corner of the region.</p>
+<p><code class="docutils literal notranslate"><span class="pre">color:</span> <span class="pre">int</span></code> - The color of the regions borders, defaulting to the <code class="docutils literal notranslate"><span class="pre">default_color</span></code> variable of its parent UI.</p>
+<p><code class="docutils literal notranslate"><span class="pre">text:</span> <span class="pre">str</span></code> - The title of the region.</p>
+<p><code class="docutils literal notranslate"><span class="pre">framed:</span> <span class="pre">bool</span></code> - Whether the regions borders should be drawn to the screen. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">visible:</span> <span class="pre">bool</span></code> - Whether the region is drawn at all. Default is <code class="docutils literal notranslate"><span class="pre">True</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">elements:</span> <span class="pre">list</span></code> - A list of all elements added to the region using <code class="docutils literal notranslate"><span class="pre">Region().add_element()</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sOrigin:</span> <span class="pre">Position</span></code> - A shorthand for the inside top left corner of the region.</p>
+<p><code class="docutils literal notranslate"><span class="pre">eOrigin:</span> <span class="pre">Position</span></code> - A shorthand for the inside bottom right corner of the region.</p>
+</section>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
+<section id="id1">
+<h3>Instance<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">add_element(element:</span> <span class="pre">Element)</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code> - Add an Element to the region, see: <a class="reference internal" href="element.html"><span class="doc">The Basic Element</span></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">set_text(text:</span> <span class="pre">str)</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code> - Set the title of the region.</p>
+<p><code class="docutils literal notranslate"><span class="pre">inBounds(position:</span> <span class="pre">Position)</span> <span class="pre">-&gt;</span> <span class="pre">Bool</span></code> - Determine whether a <code class="docutils literal notranslate"><span class="pre">Position</span></code> is absolutely within bounds of the region.</p>
+<p><code class="docutils literal notranslate"><span class="pre">move(position:</span> <span class="pre">Position)</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code> - Move the region absolutely and recalculate its relative packing dictionary.</p>
+<p><code class="docutils literal notranslate"><span class="pre">resize(size:</span> <span class="pre">Position)</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code> - Resize the region absolutely and recalculate its relative packing dictionary.</p>
+<p><code class="docutils literal notranslate"><span class="pre">calc_pack()</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code> - Recalculate the relative packing dictionary.</p>
+<p><code class="docutils literal notranslate"><span class="pre">hidden(visibility:</span> <span class="pre">bool)</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code> - Whether the region and its elements are drawn at all.</p>
+<p><code class="docutils literal notranslate"><span class="pre">addstr(y:</span> <span class="pre">int,</span> <span class="pre">x:</span> <span class="pre">int,</span> <span class="pre">string:</span> <span class="pre">str,</span> <span class="pre">options=0)</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code> - A curses shorthand for <code class="docutils literal notranslate"><span class="pre">stdscr.addstr()</span></code> with added functionality to remove overdrawing.</p>
+<p><code class="docutils literal notranslate"><span class="pre">error(text:</span> <span class="pre">str)</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code> - Forcefully deactivate the UI, clean up curses setup and print some text to the console. Mainly used for debugging applications.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="ui.html" class="btn btn-neutral float-left" title="The UI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="position.html" class="btn btn-neutral float-right" title="Positioning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, iiVeil.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

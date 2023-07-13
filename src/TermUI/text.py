@@ -34,8 +34,9 @@ class Text(Element):
 
         This will do nothing if you do not add it to a region using Region.add_region().
         """
-        if self.region is not None or self.hidden:
-            self.callback(self)
+        if self.region is None or self.hidden:
+            return
+        self.callback(self)
 
     def draw(self):
         """Draw this text to the screen.

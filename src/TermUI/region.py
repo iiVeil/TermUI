@@ -39,21 +39,19 @@ class Region:
     def set_text(self, text: str):
         """Change the name of this region
 
-        This will do nothing if you do not add it to a UI using UI().add_region().
-
         Args:
             text (str): the new name of the region
         """
         self.text = text
 
-    def move(self, position: Position):
+    def move(self, size: Position):
         """Move a element
 
         Args:
             position (Position): The new position
         """
-        self.start = position
-        self.end = position + self.size
+        self.start = size
+        self.end = size + self.size
         self.calc_pack()
 
     def resize(self, position: Position):
@@ -72,7 +70,8 @@ class Region:
             "right": Position(
                 self.size.x+self.start.x+1, self.start.y),
             "down": Position(self.start.x, self.start.y+self.size.y+1),
-            "up": Position(self.start.x, self.start.y-self.size.y)
+            "up": Position(self.start.x, self.start.y-1),
+            "left": Position(self.start.x-1, self.start.y)
         }
 
     def draw(self):
@@ -133,7 +132,6 @@ class Region:
             bool: _description_
         """
         self.visible = visibility
-        self.draw()
 
     def addstr(self, y: int, x: int, string: str, options=0):
         """Shorthand helper function to add a string to the screen

@@ -10,6 +10,16 @@ class Position:
     And a custom .half() method which returns half of the position rounded down.
     """
 
+    @classmethod
+    def DEFAULT_TERM_SIZE(cls):
+        "Return a position equal to the default terminal size on most operating systems. Equivalent to Position(108,28)"
+        return cls(108, 28)
+
+    @classmethod
+    def ORIGIN(cls):
+        "Return a position that will place an object in its parents origin, the top left corner. Equivalent to Position(0,0)"
+        return cls(0, 0)
+
     def __init__(self, x: int = 0, y: int = 0, xypair: tuple = None):
         if xypair:
             self.x, self.y = xypair

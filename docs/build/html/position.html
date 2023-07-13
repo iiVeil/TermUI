@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Positioning &mdash; TermUI 1.1 documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Coloring" href="colors.html" />
+    <link rel="prev" title="The Region" href="region.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            TermUI
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Quickstart:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="basics.html">The Basics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="createanapp.html">Create your first app</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">UI:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="ui.html">The UI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="region.html">The Region</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Positioning</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creation">Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Instance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#class">Class</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#notable-features">Notable Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#centering-elements">Centering Elements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="colors.html">Coloring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packing.html">Packing</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Elements:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="element.html">The Basic Element</a></li>
+<li class="toctree-l1"><a class="reference internal" href="text.html">The Text Object</a></li>
+<li class="toctree-l1"><a class="reference internal" href="button.html">The Button</a></li>
+<li class="toctree-l1"><a class="reference internal" href="checkbox.html">The Checkbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="textbox.html">The Textbox</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">TermUI</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="basics.html">The Basics</a></li>
+      <li class="breadcrumb-item active">Positioning</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/position.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="positioning">
+<h1>Positioning<a class="headerlink" href="#positioning" title="Permalink to this heading"></a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">Position</span></code> object is a hyper simple 2D positioning tool.</p>
+<section id="creation">
+<h2>Creation<a class="headerlink" href="#creation" title="Permalink to this heading"></a></h2>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TermUI.position</span> <span class="kn">import</span> <span class="n">Position</span>
+
+<span class="n">position</span> <span class="o">=</span> <span class="n">Position</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>OR create it with a tuple <code class="docutils literal notranslate"><span class="pre">(x,</span> <span class="pre">y)</span></code></p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TermUI.position</span> <span class="kn">import</span> <span class="n">Position</span>
+
+<span class="n">position</span> <span class="o">=</span> <span class="n">Position</span><span class="p">(</span><span class="n">xypair</span><span class="p">:</span> <span class="nb">tuple</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading"></a></h2>
+<section id="instance">
+<h3>Instance<a class="headerlink" href="#instance" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">x:</span> <span class="pre">int</span></code> - Returns the x value</p>
+<p><code class="docutils literal notranslate"><span class="pre">y:</span> <span class="pre">int</span></code> - Returns the y value</p>
+</section>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
+<section id="id1">
+<h3>Instance<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">half()</span> <span class="pre">-&gt;</span> <span class="pre">Position</span></code> - Returns a positioning object equal to half of the current x and y rounded down.</dt><dd><p><code class="docutils literal notranslate"><span class="pre">Position(10,</span> <span class="pre">5).half()</span></code> = <code class="docutils literal notranslate"><span class="pre">Position(5,</span> <span class="pre">2)</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="class">
+<h3>Class<a class="headerlink" href="#class" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">ORIGIN()</span> <span class="pre">-&gt;</span> <span class="pre">Position</span></code> - Returns <code class="docutils literal notranslate"><span class="pre">Position(0,</span> <span class="pre">0)</span></code>. This is here for clarities sake.</p>
+<p><code class="docutils literal notranslate"><span class="pre">DEFAULT_TERM_SIZE()</span> <span class="pre">-&gt;</span> <span class="pre">Position</span></code> - Returns <code class="docutils literal notranslate"><span class="pre">Position(108,</span> <span class="pre">28)</span></code>. This is the screenspace curses gets when a terminal is on the default size (120 columns, 30 rows). Its here because I hate remembering it.</p>
+</section>
+</section>
+<section id="notable-features">
+<h2>Notable Features<a class="headerlink" href="#notable-features" title="Permalink to this heading"></a></h2>
+<dl>
+<dt>Position objects support addition and subtraction from other position objects.</dt><dd><p>ex. <code class="docutils literal notranslate"><span class="pre">Position(10,2)</span> <span class="pre">-</span> <span class="pre">Position(3,</span> <span class="pre">1)</span> <span class="pre">=</span> <span class="pre">Position(7,</span> <span class="pre">1)</span></code></p>
+<p>ex. <code class="docutils literal notranslate"><span class="pre">Position(10,2)</span> <span class="pre">+</span> <span class="pre">Position(3,</span> <span class="pre">1)</span> <span class="pre">=</span> <span class="pre">Position(13,</span> <span class="pre">3)</span></code></p>
+</dd>
+</dl>
+</section>
+<section id="centering-elements">
+<h2>Centering Elements<a class="headerlink" href="#centering-elements" title="Permalink to this heading"></a></h2>
+<p>Centering objects can be a daunting task if you are looking at it blind.</p>
+<p>To truly center an object in a region we first need the middle of the region, we can get that by using the size of the region, which can be found in <code class="docutils literal notranslate"><span class="pre">Region().size</span></code>.</p>
+<p>To get the horizontal center, take half of the regions size’s x coordinate <code class="docutils literal notranslate"><span class="pre">Region().size.half().x</span></code></p>
+<p>Getting the vertical center is no different <code class="docutils literal notranslate"><span class="pre">Region().size.half().y</span></code></p>
+<p>Now to actually center an element, we need to offset it by half the length of the element (so the center of our element is on the middle space). Lets keep it simple and use text for this example.</p>
+<p>We want to center <code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">love</span> <span class="pre">TermUI!</span></code>.</p>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">curses</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">from</span> <span class="nn">TermUI.ui</span> <span class="kn">import</span> <span class="n">UI</span>
+<span class="kn">from</span> <span class="nn">TermUI.region</span> <span class="kn">import</span> <span class="n">Region</span>
+<span class="kn">from</span> <span class="nn">TermUI.text</span> <span class="kn">import</span> <span class="n">Text</span>
+<span class="kn">from</span> <span class="nn">TermUI.position</span> <span class="kn">import</span> <span class="n">Position</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">stdscr</span><span class="p">):</span>
+
+    <span class="n">ui</span> <span class="o">=</span> <span class="n">UI</span><span class="p">(</span><span class="n">stdscr</span><span class="p">)</span>
+
+    <span class="n">region</span> <span class="o">=</span> <span class="n">Region</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">Position</span><span class="o">.</span><span class="n">ORIGIN</span><span class="p">(),</span> <span class="n">Position</span><span class="o">.</span><span class="n">DEFAULT_TERM_SIZE</span><span class="p">())</span>
+    <span class="n">region</span><span class="o">.</span><span class="n">framed</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># lets hide its border for now</span>
+
+    <span class="n">center_me</span> <span class="o">=</span> <span class="s2">&quot;I love TermUI!&quot;</span>
+    <span class="c1"># the text we want to center</span>
+
+    <span class="n">center_of_region</span> <span class="o">=</span> <span class="n">Position</span><span class="p">(</span><span class="n">region</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">half</span><span class="p">()</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">region</span><span class="o">.</span><span class="n">size</span><span class="o">.</span><span class="n">half</span><span class="p">()</span><span class="o">.</span><span class="n">y</span><span class="p">)</span>
+    <span class="c1"># the center space in the region</span>
+
+    <span class="n">half_of_length</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">floor</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">center_me</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+    <span class="c1"># get half the length of the string, rounded down because TermUI only works in whole numbers.</span>
+
+    <span class="n">offset_by_length</span> <span class="o">=</span> <span class="n">center_of_region</span> <span class="o">-</span> <span class="n">Position</span><span class="p">(</span><span class="n">half_of_length</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># offset the position by half of the length of the text</span>
+
+    <span class="n">text</span> <span class="o">=</span> <span class="n">Text</span><span class="p">(</span><span class="n">center_me</span><span class="p">,</span> <span class="n">offset_by_length</span><span class="p">)</span>
+
+    <span class="n">region</span><span class="o">.</span><span class="n">add_element</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="n">ui</span><span class="o">.</span><span class="n">add_region</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+    <span class="n">ui</span><span class="o">.</span><span class="n">activate</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">curses</span><span class="o">.</span><span class="n">wrapper</span><span class="p">(</span><span class="n">main</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>While we used text in this example, the same logic will work with any element.</p>
+<p>Find the center, subtract by half of the length.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="region.html" class="btn btn-neutral float-left" title="The Region" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="colors.html" class="btn btn-neutral float-right" title="Coloring" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, iiVeil.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

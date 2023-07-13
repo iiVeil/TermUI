@@ -2,6 +2,7 @@ import curses
 import time
 from .region import Region
 from .position import Position
+from .textbox import Textbox
 
 
 class UI:
@@ -10,6 +11,8 @@ class UI:
     count = 0
     screen_initialized = False
     last_button_clicked = 0
+    clickable_cooldown = 300
+    "The amount of the time in milliseconds between registered clicks. default is 300"
 
     @staticmethod
     def init_screen():
@@ -105,10 +108,12 @@ class UI:
         for region in self.regions:
             if region.inBounds(position):
                 for element in region.elements:
-                    if element.in_bounds(position):
-                        if element.callback is not None:
+                    if element.callback is not None:
+                        if element.in_bounds(position):
                             UI.last_button_clicked = time.time()*1000
                             element.click()
+                            return element
+        return None
 
     def loop(self):
         """
@@ -119,15 +124,19 @@ class UI:
             event = self.window.getch()
             if event == curses.KEY_MOUSE:
                 _, mx, my, _, _ = curses.getmouse()
-                if time.time()*1000 - UI.last_button_clicked >= 300:
+                if time.time()*1000 - UI.last_button_clicked >= UI.clickable_cooldown:
                     position = Position(mx, my)
-                    self.get_clickable(position)
+                    element = self.get_clickable(position)
+                    if type(element) not in [Textbox, type(None)]:
+                        if self.event_callback is not None:
+                            self.event_callback(event)
+                        self.draw()
             if event == curses.KEY_RESIZE:
                 y, x = self.window.getmaxyx()
                 curses.resize_term(y, x)
+                if self.event_callback is not None:
+                    self.event_callback(event)
                 self.draw()
-            if self.event_callback is not None:
-                self.event_callback(event)
 
     def draw(self):
         """

@@ -1,5 +1,6 @@
 import curses
 
+
 """Running this file will give you a clean output of the color_pair color codes used in the TermUI library
 """
 
