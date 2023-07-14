@@ -51,6 +51,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="ui.html">The UI</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">The Region</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creation">Creation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#instance">Instance</a></li>
 </ul>
@@ -88,7 +89,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="basics.html">The Basics</a></li>
       <li class="breadcrumb-item active">The Region</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/region.rst.txt" rel="nofollow"> View page source</a>
@@ -102,6 +102,16 @@
   <section id="the-region">
 <h1>The Region<a class="headerlink" href="#the-region" title="Permalink to this heading"></a></h1>
 <p>The Region is the home of your elements. It handles their positioning and drawing.</p>
+<section id="creation">
+<h2>Creation<a class="headerlink" href="#creation" title="Permalink to this heading"></a></h2>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TermUI.region</span> <span class="kn">import</span> <span class="n">Region</span>
+<span class="kn">from</span> <span class="nn">TermUI.position</span> <span class="kn">import</span> <span class="n">Position</span>
+
+
+<span class="n">region</span> <span class="o">=</span> <span class="n">Region</span><span class="p">(</span><span class="s2">&quot;A default terminal size region.&quot;</span><span class="p">,</span> <span class="n">Position</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">Position</span><span class="o">.</span><span class="n">DEFAULT_TERM_SIZE</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
 <section id="properties">
 <h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading"></a></h2>
 <section id="instance">

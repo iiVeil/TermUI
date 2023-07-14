@@ -20,7 +20,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="The Region" href="region.html" />
-    <link rel="prev" title="The Textbox" href="textbox.html" /> 
+    <link rel="prev" title="Create your first app" href="createanapp.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -89,7 +89,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="basics.html">The Basics</a></li>
       <li class="breadcrumb-item active">The UI</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/ui.rst.txt" rel="nofollow"> View page source</a>
@@ -117,8 +116,8 @@
 <section id="instance">
 <h3>Instance<a class="headerlink" href="#instance" title="Permalink to this heading"></a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">regions:</span> <span class="pre">list</span></code> - A list of regions added to the ui using <code class="docutils literal notranslate"><span class="pre">UI().add_region()</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">draw_callback:</span> <span class="pre">func</span></code> - A method to run immediately before every frame is drawn. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>. Passes no arguments to the callback function.</p>
-<p><code class="docutils literal notranslate"><span class="pre">event_callback:</span> <span class="pre">func</span></code> - A method to run when a input is recieved via <code class="docutils literal notranslate"><span class="pre">stdscr.getch()</span></code>. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>. Passes the event to the callback function.</p>
+<p><code class="docutils literal notranslate"><span class="pre">draw_callback:</span> <span class="pre">Function</span></code> - A method to run immediately before every frame is drawn. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>. Passes no arguments to the callback function.</p>
+<p><code class="docutils literal notranslate"><span class="pre">event_callback:</span> <span class="pre">Function</span></code> - A method to run when a input is recieved via <code class="docutils literal notranslate"><span class="pre">stdscr.getch()</span></code>. Default is <code class="docutils literal notranslate"><span class="pre">None</span></code>. Passes the curses event to the callback function.</p>
 <p><code class="docutils literal notranslate"><span class="pre">default_color:</span> <span class="pre">int</span></code> - The curses <code class="docutils literal notranslate"><span class="pre">color_pair()</span></code> int that will propogate to regions inside of it that have no color set. Default is <code class="docutils literal notranslate"><span class="pre">232</span></code>.</p>
 </section>
 <section id="class">
@@ -160,7 +159,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="textbox.html" class="btn btn-neutral float-left" title="The Textbox" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="createanapp.html" class="btn btn-neutral float-left" title="Create your first app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="region.html" class="btn btn-neutral float-right" title="The Region" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

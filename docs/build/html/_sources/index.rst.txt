@@ -11,8 +11,6 @@ pyTermUI or just TermUI is a rapid development terminal user interface library f
 
 TermUI is meant to be barebones by design, giving the developer control of everything outside of the drawing and interaction of the elements themselves.
 
-
-
 Features
 ---------------------
 * User element support:
@@ -30,14 +28,14 @@ Getting started with TermUI
 -----------------------------
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 2
    :caption: Quickstart:
 
    basics.rst
    createanapp.rst
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 2
    :caption: UI:
 
    ui.rst
@@ -48,7 +46,7 @@ Getting started with TermUI
 
 
 .. toctree::
-   :maxdepth: 5
+   :maxdepth: 1
    :caption: Elements:
 
    element.rst

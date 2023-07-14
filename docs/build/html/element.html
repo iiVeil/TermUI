@@ -19,8 +19,8 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Create your first app" href="createanapp.html" />
-    <link rel="prev" title="Coloring" href="colors.html" /> 
+    <link rel="next" title="The Text Object" href="text.html" />
+    <link rel="prev" title="Packing" href="packing.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -57,7 +57,19 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Elements:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">The Basic Element</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Basic Element</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creation">Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-a-label">Adding a label</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="text.html">The Text Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="button.html">The Button</a></li>
 <li class="toctree-l1"><a class="reference internal" href="checkbox.html">The Checkbox</a></li>
@@ -78,7 +90,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="basics.html">The Basics</a></li>
       <li class="breadcrumb-item active">The Basic Element</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/element.rst.txt" rel="nofollow"> View page source</a>
@@ -91,15 +102,57 @@
              
   <section id="the-basic-element">
 <h1>The Basic Element<a class="headerlink" href="#the-basic-element" title="Permalink to this heading"></a></h1>
-<p>Test</p>
+<p>The element is what adds functionality to your app. These are the objects people interact with.</p>
+<section id="creation">
+<h2>Creation<a class="headerlink" href="#creation" title="Permalink to this heading"></a></h2>
+<p>The element object themselves arent created, you can create a specified element.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference internal" href="text.html"><span class="doc">The Text Object</span></a></p></li>
+<li><p><a class="reference internal" href="button.html"><span class="doc">The Button</span></a></p></li>
+<li><p><a class="reference internal" href="checkbox.html"><span class="doc">The Checkbox</span></a></p></li>
+<li><p><a class="reference internal" href="textbox.html"><span class="doc">The Textbox</span></a></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading"></a></h2>
+<p>These are global properties shared by all elements.</p>
+<section id="instance">
+<h3>Instance<a class="headerlink" href="#instance" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">region:</span> <span class="pre">Region</span></code> - The region the element is stored in assuming it was added to the region using <code class="docutils literal notranslate"><span class="pre">Region().add_element()</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">start:</span> <span class="pre">Position</span></code> - The top left corner of the element.</p>
+<p><code class="docutils literal notranslate"><span class="pre">hidden:</span> <span class="pre">bool</span></code> - Whether the element should be drawn.</p>
+<p><code class="docutils literal notranslate"><span class="pre">size:</span> <span class="pre">Position</span></code> - The length and height of the object.</p>
+<p><code class="docutils literal notranslate"><span class="pre">end:</span> <span class="pre">Position</span></code> - The bottom right corner of the object.</p>
+<p><code class="docutils literal notranslate"><span class="pre">color:</span> <span class="pre">int</span></code> - The <code class="docutils literal notranslate"><span class="pre">color_pair</span></code> int of this element. See: <a class="reference internal" href="colors.html"><span class="doc">Coloring</span></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">data:</span> <span class="pre">dict</span></code> - A extra storage dictionary for other data you might want to store with your object.</p>
+</section>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
+<p>These are global methods shared by all elements.</p>
+<section id="id1">
+<h3>Instance<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">in_bounds(position:</span> <span class="pre">Position)</span> <span class="pre">-&gt;</span> <span class="pre">bool</span></code> - Returns a boolean based on if the element occupies the position.</p>
+<p><code class="docutils literal notranslate"><span class="pre">addstr(y:</span> <span class="pre">int,</span> <span class="pre">x:</span> <span class="pre">int,</span> <span class="pre">string:</span> <span class="pre">str,</span> <span class="pre">options=0)</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code> -  A curses shorthand for <code class="docutils literal notranslate"><span class="pre">stdscr.addstr()</span></code> with added functionality to remove overdrawing.</p>
+<p><code class="docutils literal notranslate"><span class="pre">move(position:</span> <span class="pre">Position)</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code> - Move a object within its region and recalculate its pack dictionary.</p>
+<p><code class="docutils literal notranslate"><span class="pre">resize(position:</span> <span class="pre">Position)</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code> - Resize an object and recalculate its pack dictionary.</p>
+<p><code class="docutils literal notranslate"><span class="pre">event_mask(*args)</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code> - Used to emulate a click for this element. This is useful when used as a callback for other elements.</p>
+</section>
+</section>
+<section id="adding-a-label">
+<h2>Adding a label<a class="headerlink" href="#adding-a-label" title="Permalink to this heading"></a></h2>
+<p>If you are having trouble adding a label to a checkbox <a class="reference internal" href="createanapp.html"><span class="doc">Create your first app</span></a> shows how to properly add a label to a checkbox.</p>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="colors.html" class="btn btn-neutral float-left" title="Coloring" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="createanapp.html" class="btn btn-neutral float-right" title="Create your first app" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="packing.html" class="btn btn-neutral float-left" title="Packing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="text.html" class="btn btn-neutral float-right" title="The Text Object" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

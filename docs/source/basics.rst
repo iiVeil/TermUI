@@ -78,13 +78,11 @@ For now, you dont have to understand positioning, but for clarities sake:
 
 Elements
 ~~~~~~~~~~
-.. toctree::
-   :maxdepth: 3
 
-   text.rst
-   button.rst
-   checkbox.rst
-   textbox.rst
+    * :doc:`text`
+    * :doc:`button`
+    * :doc:`checkbox`
+    * :doc:`textbox`
 
 Elements are the things you interact with.
 
@@ -125,26 +123,21 @@ Lets add a piece of text to our code:
 Your Next Steps
 ~~~~~~~~~~~~~~~~~~
 
-Learn about the UI, Regions, and Positioning object:
+Learn about the UI, Regions, Positioning, Coloring and Packing.
 
-.. toctree::
-   :maxdepth: 3
-
-   ui.rst
-   region.rst
-   position.rst
-   colors.rst
-
+    * :doc:`ui`
+    * :doc:`region`
+    * :doc:`position`
+    * :doc:`colors`
+    * :doc:`packing`
 
 Learn about the Elements and how they can interact with each other:
 
-.. toctree::
-   :maxdepth: 3
+    * :doc:`element`
+    * :doc:`text`
+    * :doc:`button`
+    * :doc:`checkbox`
+    * :doc:`textbox`
 
-   element.rst
-   text.rst
-   button.rst
-   checkbox.rst
-   textbox.rst
 
 Lastly, :doc:`createanapp`!

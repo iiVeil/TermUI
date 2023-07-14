@@ -3,6 +3,18 @@ The Region
 
 The Region is the home of your elements. It handles their positioning and drawing.
 
+Creation
+**********
+
+.. code-block:: py
+    
+    from TermUI.region import Region
+    from TermUI.position import Position
+
+
+    region = Region("A default terminal size region.", Position(0,0), Position.DEFAULT_TERM_SIZE())
+
+
 Properties
 **************
 

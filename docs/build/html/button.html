@@ -59,7 +59,18 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="element.html">The Basic Element</a></li>
 <li class="toctree-l1"><a class="reference internal" href="text.html">The Text Object</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">The Button</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Button</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creation">Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Instance</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="checkbox.html">The Checkbox</a></li>
 <li class="toctree-l1"><a class="reference internal" href="textbox.html">The Textbox</a></li>
 </ul>
@@ -78,7 +89,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="basics.html">The Basics</a></li>
       <li class="breadcrumb-item active">The Button</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/button.rst.txt" rel="nofollow"> View page source</a>
@@ -91,7 +101,41 @@
              
   <section id="the-button">
 <h1>The Button<a class="headerlink" href="#the-button" title="Permalink to this heading"></a></h1>
-<p>Test</p>
+<p>While anything can be clickable, not everything is a button.</p>
+<p>This element will draw a “clickable” looking button and requires a callback.</p>
+<section id="creation">
+<h2>Creation<a class="headerlink" href="#creation" title="Permalink to this heading"></a></h2>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TermUI.button</span> <span class="kn">import</span> <span class="n">Button</span>
+<span class="kn">from</span> <span class="nn">TermUI.position</span> <span class="kn">import</span> <span class="n">Position</span>
+
+<span class="k">def</span> <span class="nf">on_button</span><span class="p">(</span><span class="n">button</span><span class="p">):</span>
+    <span class="c1"># swap the buttons colors between green and red when you click it</span>
+    <span class="n">button</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="mi">204</span> <span class="k">if</span> <span class="n">button</span><span class="o">.</span><span class="n">clicked</span> <span class="k">else</span> <span class="mi">85</span>
+
+<span class="n">button</span> <span class="o">=</span> <span class="n">Button</span><span class="p">(</span><span class="s2">&quot;Change my color!&quot;</span><span class="p">,</span> <span class="n">Position</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">on_button</span><span class="p">)</span>
+<span class="n">button</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="mi">85</span>
+</pre></div>
+</div>
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading"></a></h2>
+<p>Some properties are properties of <a class="reference internal" href="element.html"><span class="doc">The Basic Element</span></a> which apply to all elements and will not be repeated here.</p>
+<section id="instance">
+<h3>Instance<a class="headerlink" href="#instance" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">text:</span> <span class="pre">str</span></code> - The text displayed in the button.</p>
+<p><code class="docutils literal notranslate"><span class="pre">clicked:</span> <span class="pre">bool</span></code> - Whether the button is in a clicked state, Functions as a checkbox.</p>
+<p><code class="docutils literal notranslate"><span class="pre">highlight:</span> <span class="pre">str</span></code> - The pieces of text that should wrap the inner button text. Defaults to “&gt;&lt;”. This string should always be 2 characters</p>
+<p><code class="docutils literal notranslate"><span class="pre">framed:</span> <span class="pre">bool</span></code> - Whether the buttons frame should be drawn.</p>
+</section>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
+<p>Some methods are methods of <a class="reference internal" href="element.html"><span class="doc">The Basic Element</span></a> which apply to all elements and will not be repeated here.</p>
+<section id="id1">
+<h3>Instance<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">set_text(text:</span> <span class="pre">str)</span> <span class="pre">-&gt;</span> <span class="pre">None</span></code> - Set the inner text of the button and recalculate the size.</p>
+</section>
+</section>
 </section>
 
 

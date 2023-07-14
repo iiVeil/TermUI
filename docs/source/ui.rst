@@ -22,9 +22,9 @@ Instance
 
 ``regions: list`` - A list of regions added to the ui using ``UI().add_region()``.
 
-``draw_callback: func`` - A method to run immediately before every frame is drawn. Default is ``None``. Passes no arguments to the callback function.
+``draw_callback: Function`` - A method to run immediately before every frame is drawn. Default is ``None``. Passes no arguments to the callback function.
 
-``event_callback: func`` - A method to run when a input is recieved via ``stdscr.getch()``. Default is ``None``. Passes the event to the callback function.
+``event_callback: Function`` - A method to run when a input is recieved via ``stdscr.getch()``. Default is ``None``. Passes the curses event to the callback function.
 
 ``default_color: int`` - The curses ``color_pair()`` int that will propogate to regions inside of it that have no color set. Default is ``232``.
 

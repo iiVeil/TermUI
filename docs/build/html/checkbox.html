@@ -60,7 +60,18 @@
 <li class="toctree-l1"><a class="reference internal" href="element.html">The Basic Element</a></li>
 <li class="toctree-l1"><a class="reference internal" href="text.html">The Text Object</a></li>
 <li class="toctree-l1"><a class="reference internal" href="button.html">The Button</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">The Checkbox</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The Checkbox</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creation">Creation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#properties">Properties</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#instance">Instance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#methods">Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Instance</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="textbox.html">The Textbox</a></li>
 </ul>
 
@@ -78,7 +89,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="basics.html">The Basics</a></li>
       <li class="breadcrumb-item active">The Checkbox</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/checkbox.rst.txt" rel="nofollow"> View page source</a>
@@ -91,7 +101,39 @@
              
   <section id="the-checkbox">
 <h1>The Checkbox<a class="headerlink" href="#the-checkbox" title="Permalink to this heading"></a></h1>
-<p>Test</p>
+<p>The checkbox is a togglable button.</p>
+<section id="creation">
+<h2>Creation<a class="headerlink" href="#creation" title="Permalink to this heading"></a></h2>
+<div class="highlight-py notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">TermUI.checkbox</span> <span class="kn">import</span> <span class="n">Checkbox</span>
+<span class="kn">from</span> <span class="nn">TermUI.position</span> <span class="kn">import</span> <span class="n">Position</span>
+
+<span class="k">def</span> <span class="nf">on_checkbox</span><span class="p">(</span><span class="n">checkbox</span><span class="p">):</span>
+    <span class="c1"># do something.</span>
+    <span class="o">...</span>
+
+<span class="n">checkbox</span> <span class="o">=</span> <span class="n">Checkbox</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="n">Position</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">),</span> <span class="n">callback</span><span class="o">=</span><span class="n">on_checkbox</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this heading"></a></h2>
+<p>Some properties are properties of <a class="reference internal" href="element.html"><span class="doc">The Basic Element</span></a> which apply to all elements and will not be repeated here.</p>
+<section id="instance">
+<h3>Instance<a class="headerlink" href="#instance" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">checked:</span> <span class="pre">bool</span></code> - Whether the checkbox is checked or not.</p>
+<p><code class="docutils literal notranslate"><span class="pre">colors:</span> <span class="pre">list</span></code> - A length 2 list of color_pair integers. [Off, On]. See <a class="reference internal" href="colors.html"><span class="doc">Coloring</span></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">spacing:</span> <span class="pre">bool</span></code> - Whether there should be spacing around the check. Default is False.</p>
+<p><code class="docutils literal notranslate"><span class="pre">color:</span> <span class="pre">int</span></code> - The current color_pair int displayed by the checkbox.</p>
+</section>
+</section>
+<section id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this heading"></a></h2>
+<p>Some methods are methods of <a class="reference internal" href="element.html"><span class="doc">The Basic Element</span></a> which apply to all elements and will not be repeated here.</p>
+<section id="id1">
+<h3>Instance<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">spaced(spacing:</span> <span class="pre">bool)</span></code> - Changes the spacing property of the checkbox and recalculates the size.</p>
+</section>
+</section>
 </section>
 
 

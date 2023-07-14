@@ -42,6 +42,7 @@ class Textbox(Element):
         """Reset the text in the texbox, display and content
         """
         self.text = ""
+        self.display = ""
 
     def draw(self) -> None:
         """Draws the textbox to the screen
