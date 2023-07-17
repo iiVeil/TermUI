@@ -142,10 +142,10 @@ class UI:
         ? Description:
         * * Draw the current UI to the terminal
         """
-        if self.draw_callback is not None:
-            self.draw_callback()
         if self.active:
             self.window.clear()
-            self.window.refresh()
             for region in self.regions:
                 region.draw()
+            self.window.refresh()
+            if self.draw_callback is not None:
+                self.draw_callback()
