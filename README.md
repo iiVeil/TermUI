@@ -18,11 +18,12 @@ The big stuff first:
 
 Smaller stuff:
 - A large lag spike when switching between multiple focused textboxes was fixed.
+- Solved a draw-line issue on weaker hardware.
 - Move and resize functionality for all regions and elements.
 - Move or resizing an object will recalculate the relative packing dictionary assuming you use the methods provided.
 - Better explanations of properties and more informative doc-strings.
 - Documentation on the way.
 - Moved around a lot of the functions into the `Element` parent class for parity.
 
-
 In general, lots of changes, with no required code change for current apps. (maybe a few spacing changes as packing was homogenized for all objects.)
+
