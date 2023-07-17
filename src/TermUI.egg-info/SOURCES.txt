@@ -1,6 +1,7 @@
 LICENSE
 README.md
 pyproject.toml
+requirements.txt
 src/TermUI/__init__.py
 src/TermUI/button.py
 src/TermUI/checkbox.py
@@ -14,4 +15,5 @@ src/TermUI/ui.py
 src/TermUI.egg-info/PKG-INFO
 src/TermUI.egg-info/SOURCES.txt
 src/TermUI.egg-info/dependency_links.txt
+src/TermUI.egg-info/requires.txt
 src/TermUI.egg-info/top_level.txt
