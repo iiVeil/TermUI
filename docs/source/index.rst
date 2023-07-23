@@ -21,11 +21,12 @@ Features
     * Buttons
     * Checkboxes
     * User input boxes (textboxes)
-    * Interactable Text
+    * Interactable text
 * Color support
 * Runs on any modern terminal
 * Multi UI support
-
+* Hover support
+* Integrated ascii art functionality
 
 
 Getting started with TermUI
@@ -58,3 +59,10 @@ Getting started with TermUI
    button.rst
    checkbox.rst
    textbox.rst
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Toolkits:
+
+   hover.rst
+   ascii.rst

@@ -12,6 +12,7 @@ class UI:
     screen_initialized = False
     last_element_clicked = 0
     clickable_cooldown = 300
+    last_cursor_pos = (0, 0)
     "The amount of the time in milliseconds between registered clicks. default is 300"
 
     @staticmethod
@@ -40,6 +41,8 @@ class UI:
         self.event_callback = None
 
         self.regions = []
+        
+        self.cursor = Position(0,0)
         if not UI.screen_initialized:
             UI.init_screen()
         UI.count += 1
@@ -137,6 +140,11 @@ class UI:
             if self.event_callback is not None:
                 self.event_callback(event)
 
+    def set_curs(self):
+        x, y = self.cursor.x, self.cursor.y
+        
+        curses.setsyx(y,x)
+
     def draw(self):
         """
         ? Description:
@@ -146,6 +154,8 @@ class UI:
             self.window.clear()
             for region in self.regions:
                 region.draw()
-            self.window.refresh()
+            self.window.noutrefresh()
+            self.set_curs()
+            curses.doupdate()
             if self.draw_callback is not None:
                 self.draw_callback()

@@ -17,3 +17,5 @@ src/TermUI.egg-info/SOURCES.txt
 src/TermUI.egg-info/dependency_links.txt
 src/TermUI.egg-info/requires.txt
 src/TermUI.egg-info/top_level.txt
+src/TermUI/Toolkit/asciiart.py
+src/TermUI/Toolkit/hover.py
