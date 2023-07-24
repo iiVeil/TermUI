@@ -11,11 +11,11 @@ Lets make a button turn green when we hover it.
 .. code-block:: py
     
     import curses
-    from TermUI.ui import UI
-    from TermUI.region import Region
-    from TermUI.button import Button
-    from TermUI.position import Position
-    from TermUI.Toolkit.hover import Hover
+    from pyTermUI.ui import UI
+    from pyTermUI.region import Region
+    from pyTermUI.button import Button
+    from pyTermUI.position import Position
+    from pyTermUI.Toolkit.hover import Hover
 
 
     def main(stdscr):

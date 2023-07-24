@@ -8,8 +8,8 @@ Creation
 
 .. code-block:: py
     
-    from TermUI.region import Region
-    from TermUI.position import Position
+    from pyTermUI.region import Region
+    from pyTermUI.position import Position
 
 
     region = Region("A default terminal size region.", Position(0,0), Position.DEFAULT_TERM_SIZE())

@@ -17,8 +17,8 @@ Creation
 
 .. code-block:: py
 
-    from TermUI.textbox import Textbox
-    from TermUI.position import Position
+    from pyTermUI.textbox import Textbox
+    from pyTermUI.position import Position
 
     textbox = Textbox("Placeholder Text", Position(0,0), Position(40,0))
 

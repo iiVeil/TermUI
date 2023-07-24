@@ -17,7 +17,7 @@ You can view this in your terminal by running the ``colors.py`` file in TermUIs 
 .. code-block:: py
 
     import curses
-    from TermUI.colors import main as colors
+    from pyTermUI.colors import main as colors
 
     if __name__ == "__main__":
         curses.wrapper(colors)

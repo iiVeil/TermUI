@@ -12,10 +12,10 @@ Lets draw the D-Word ascii art logo into the center of a region.
 .. code-block:: py
 
     import curses
-    from TermUI.ui import UI
-    from TermUI.region import Region
-    from TermUI.position import Position
-    from TermUI.Toolkit.asciiart import AsciiArt
+    from pyTermUI.ui import UI
+    from pyTermUI.region import Region
+    from pyTermUI.position import Position
+    from pyTermUI.Toolkit.asciiart import AsciiArt
 
 
     def main(stdscr):

@@ -10,7 +10,7 @@ Creation
 
 .. code-block:: py
 
-    from TermUI.position import Position
+    from pyTermUI.position import Position
 
     position = Position(x: int, y: int)
 
@@ -18,7 +18,7 @@ OR create it with a tuple ``(x, y)``
 
 .. code-block:: py
 
-    from TermUI.position import Position
+    from pyTermUI.position import Position
 
     position = Position(xypair: tuple)
 

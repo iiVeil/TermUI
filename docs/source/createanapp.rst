@@ -15,11 +15,11 @@ This app does away with ``Position.ORIGIN()`` and ``Position.DEFAULT_TERM_SIZE()
 .. code-block:: py
 
     import curses
-    from TermUI.ui import UI
-    from TermUI.region import Region
-    from TermUI.checkbox import Checkbox
-    from TermUI.position import Position
-    from TermUI.text import Text
+    from pyTermUI.ui import UI
+    from pyTermUI.region import Region
+    from pyTermUI.checkbox import Checkbox
+    from pyTermUI.position import Position
+    from pyTermUI.text import Text
 
 
     def main(stdscr):

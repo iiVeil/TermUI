@@ -9,8 +9,8 @@ Creation
 
 .. code-block:: py
 
-    from TermUI.checkbox import Checkbox
-    from TermUI.position import Position
+    from pyTermUI.checkbox import Checkbox
+    from pyTermUI.position import Position
 
     def on_checkbox(checkbox):
         # do something.

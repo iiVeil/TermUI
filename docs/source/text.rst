@@ -11,8 +11,8 @@ Creation
 
 .. code-block:: py
 
-    from TermUI.text import Text
-    from TermUI.position import Position
+    from pyTermUI.text import Text
+    from pyTermUI.position import Position
 
     text = Text("I love TermUI!", Position(0,0))
 

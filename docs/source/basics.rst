@@ -22,7 +22,7 @@ Lets create some basic boilerplate for a TermUI app:
 .. code-block:: py
 
     import curses
-    from TermUI.ui import UI
+    from pyTermUI.ui import UI
 
 
     def main(stdscr):

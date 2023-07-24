@@ -8,7 +8,7 @@ Creation
 
 .. code-block:: py
 
-    from TermUI.ui import UI
+    from pyTermUI.ui import UI
 
     ui = UI(stdscr: curses.stdscr)
 

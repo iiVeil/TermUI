@@ -10,8 +10,8 @@ Creation
 
 .. code-block:: py
 
-    from TermUI.button import Button
-    from TermUI.position import Position
+    from pyTermUI.button import Button
+    from pyTermUI.position import Position
 
     def on_button(button):
         # swap the buttons colors between green and red when you click it
