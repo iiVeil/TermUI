@@ -6,7 +6,6 @@ If you would like a reference for the library, D-Word is built on it. You can fi
 
 Complete documentation available at https://pytermui.readthedocs.io/en/latest/
 
-
 # Version 1.2
 
-All changelogs can be found in changelog.md 
+All changelogs can be found in changelog.md on github

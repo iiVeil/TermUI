@@ -11,9 +11,7 @@ pyTermUI or just TermUI is a rapid development terminal user interface library f
 
 TermUI is meant to be barebones by design, giving the developer control of everything outside of the drawing and interaction of the elements themselves.
 
-If you are on windows, TermUI requires ``windows-curses``
-
-``pip install windows-curses``
+Install TermUI ``pip install pyTermUI``
 
 Features
 ---------------------

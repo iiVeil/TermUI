@@ -1,11 +1,11 @@
 [project]
 dynamic = ["dependencies"]
-name = "TermUI"
-version = "1.2.0"
+name = "pyTermUI"
+version = "1.2.1"
 authors = [
-  { name="iiVeil", email="email@email.com" },
+  { name="iiVeil", email="zhuebner03@gmail.com" },
 ]
-description = "TermUI is a rapid development user interface library for python command-line interface applications."
+description = "pyTermUI or TermUI is a rapid development user interface library for python command-line interface applications."
 readme = "README.md"
 requires-python = ">=3.10"
 classifiers = [
@@ -18,5 +18,5 @@ classifiers = [
 dependencies = {file = ["requirements.txt"]}
 
 [project.urls]
-"Homepage" = "https://github.com/iiVeil/TermUi"
+"Github" = "https://github.com/iiVeil/TermUi"
 "Documentation" = "https://pytermui.readthedocs.io/en/latest/"
