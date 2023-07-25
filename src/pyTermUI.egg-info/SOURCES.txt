@@ -19,3 +19,4 @@ src/pyTermUI.egg-info/requires.txt
 src/pyTermUI.egg-info/top_level.txt
 src/pyTermUI/Toolkit/asciiart.py
 src/pyTermUI/Toolkit/hover.py
+src/pyTermUI/Toolkit/taskhandler.py

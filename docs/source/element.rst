@@ -55,6 +55,11 @@ Instance
 
 ``event_mask(*args) -> None`` - Used to emulate a click for this element. This is useful when used as a callback for other elements.
 
+``centerX() -> None`` - Center an element on the horizontal axis after it has been placed inside of a region.
+
+``centerY() -> None`` - Center an element on the vertical axis after it has been placed inside of a region.
+
+``centerXY() -> None`` - Center an element on both axi after it has been placed inside of a region.
 
 
 Adding a label

@@ -33,3 +33,5 @@ class AsciiArt:
             self.elements.append(element)
             self.region.add_element(element)
         
+    def end(self):
+        return

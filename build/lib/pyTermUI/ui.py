@@ -8,7 +8,10 @@ from .textbox import Textbox
 class UI:
     """The main UI component
     """
-    count = 0
+    class CursesInterrupt(Exception):
+        """Keyboard Interrupt within a curses input"""
+        ...
+    
     screen_initialized = False
     last_element_clicked = 0
     clickable_cooldown = 300
@@ -23,6 +26,7 @@ class UI:
         curses.start_color()
         curses.use_default_colors()
         curses.mousemask(1)
+        curses.raw()
         # Initialize color pairs
         for i in range(0, curses.COLORS):
             if i < 255:
@@ -31,7 +35,6 @@ class UI:
 
     def __init__(self, stdscr):
         self.window = stdscr
-        self.id = UI.count
 
         self.screen = Position(120, 30)
         self.half = self.screen.half()
@@ -41,11 +44,11 @@ class UI:
         self.event_callback = None
 
         self.regions = []
+        self.toolkits = []
         
         self.cursor = Position(0,0)
         if not UI.screen_initialized:
             UI.init_screen()
-        UI.count += 1
 
     """
     This setter functions as the second half of deactivate and activate, it will hold the UI instance open until the new UI takes over
@@ -83,6 +86,15 @@ class UI:
             region.color = self.default_color
             region.echo_color()
         self.draw()
+
+    def add_toolkits(self, *args):
+        """Add toolkits to the working UI, allowing proper closing of them.
+        
+        Assuming the toolkit has a end() method. If the toolkit does not need to be cleaned up, there is no reason to add it here.
+        """
+        
+        for arg in args:
+            self.toolkits.append(arg)
 
     def swap(self, new_ui):
         """
@@ -137,6 +149,11 @@ class UI:
                 y, x = self.window.getmaxyx()
                 curses.resize_term(y, x)
                 self.draw()
+            if event == 3:
+                for toolkit in self.toolkits:
+                    toolkit.end()
+                self.deactivate()
+                curses.endwin()
             if self.event_callback is not None:
                 self.event_callback(event)
 

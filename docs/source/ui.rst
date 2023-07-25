@@ -50,6 +50,8 @@ Methods
 
 ``activate() -> None`` - Activate the UI loop. In most cases, this should be the last thing you do when creating your UI. This loop is blocking.
 
+``add_toolkits(*args: Toolkit-Instance) -> None`` - Setup toolkits for cleanup when the program ends.
+
 Overdrawing
 ********************
 

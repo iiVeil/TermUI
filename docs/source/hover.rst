@@ -35,6 +35,9 @@ Lets make a button turn green when we hover it.
 
         hover = Hover()
 
+        ui.add_toolkits(hover)
+        # add the toolkits to all uis for cleanup on program end
+
         region = Region(title="A cool name", position=Position(
             0, 0), size=Position(108, 28))
 

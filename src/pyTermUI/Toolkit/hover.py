@@ -2,6 +2,8 @@ from curses import getmouse
 from threading import Thread
 import time
 
+from datetime import datetime
+
 from ..position import Position
 from ..element import Element
 
@@ -16,7 +18,7 @@ class Hover:
         self.elements = []
         self.threads = []
         self.last = {}
-        self.kill = False
+        self.terminate = False
         
     def add(self, element: Element, on_hover, off_hover):
         """Add an element with a callback to the hover event
@@ -28,7 +30,7 @@ class Hover:
         self.elements.append({"obj": element, "on_hover": on_hover, "off_hover": off_hover})
     
     def __check_hover(self):
-        while not self.kill:
+        while not self.terminate:
             _, mx, my, _, _ = getmouse()
             position = Position(mx, my)
             # has the mouse moved out of the last hover?
@@ -45,25 +47,25 @@ class Hover:
                     continue
             
             time.sleep(Hover.wait)
-                
-            
-        ...
-    
-    def __kill(self):
+                    
+    def end(self):
         "Kill all hover threads"
-        self.kill = True
-        for thread in self.threads:
-            thread.join()
-        self.kill = False
+        if not self.terminate:
+            self.terminate = True
+            for thread in self.threads:
+                thread.join()
+            now = datetime.now()
         
     
     def build(self):
         "Build the main thread handler"
         
-        self.__kill()
+        if self.terminate:
+            self.end()
+            self.terminate = False
         self.threads = []
         
-        thread = Thread(target=self.__check_hover, args=(), daemon=True)
+        thread = Thread(target=self.__check_hover, args=())
         
         self.threads.append(thread)
     
@@ -72,7 +74,3 @@ class Hover:
         
         for thread in self.threads: 
             thread.start()
-        
-        
-        
-        

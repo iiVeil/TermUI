@@ -1,4 +1,5 @@
 import curses
+from math import floor
 from .position import Position
 
 
@@ -48,6 +49,27 @@ class Element:
             return
         self.region.ui.window.addstr(y, x, string, options)
 
+    def centerX(self):
+        """Center this element on the horizontal axis in its region."""
+        if self.region == None:
+            return
+        center = self.region.size.half() - Position(floor(self.size.x/2), 0)
+        self.move(center)
+        
+    def centerY(self):
+        """Center this element on the vertical axis in its region."""
+        if self.region == None:
+            return
+        center = self.region.size.half() - Position(0, floor(self.size.y/2))
+        self.move(center)
+        
+    def centerXY(self):
+        """Center this element on both axi in its region."""
+        if self.region == None:
+            return
+        center = self.region.size.half() - Position(floor(self.size.x/2), floor(self.size.y/2))
+        self.move(center)
+    
     def move(self, position: Position):
         """Move a element
 
@@ -74,7 +96,8 @@ class Element:
             "right": Position(
                 self.size.x+self.start.x+1, self.start.y),
             "down": Position(self.start.x, self.start.y+self.size.y+1),
-            "up": Position(self.start.x, self.start.y-1)
+            "up": Position(self.start.x, self.start.y-1),
+            "left": Position(self.start.x-1, self.start.y)
         }
 
     def event_mask(self, *args):

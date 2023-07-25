@@ -1,7 +1,7 @@
 [project]
 dynamic = ["dependencies"]
 name = "pyTermUI"
-version = "1.2.2"
+version = "1.2.3"
 authors = [
   { name="iiVeil", email="zhuebner03@gmail.com" },
 ]

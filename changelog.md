@@ -8,6 +8,11 @@ Beginning of Toolkits, Hover support, more efficient cursor management, more tex
 - Toolkit documentation will be added as its own section in the TermUI documentation
 - The viewing cursor is now seperated from the drawing cursor which fixes many flickering issues and makes textboxes a more fluid experience.
 
+## 1.2.3
+- Background Task Toolkit implementation
+- Standarized toolkit cleanup with `UI.add_toolkits()`
+- Full support for KeyboardInterrupts
+- Easier centering for elements inside of a region using `Element.centerX()`, `Element.centerY()`, and `Element.centerXY()`
 
 
 

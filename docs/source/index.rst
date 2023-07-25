@@ -64,3 +64,4 @@ Getting started with TermUI
 
    hover.rst
    ascii.rst
+   taskhandler.rst
