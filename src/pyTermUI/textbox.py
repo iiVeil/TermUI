@@ -39,8 +39,7 @@ class Textbox(Element):
         self.calc_pack()
 
     def reset(self):
-        """Reset the text in the texbox, display and content
-        """
+        """Reset the text in the texbox, display and content"""
         self.text = ""
         self.display = ""
 
@@ -60,42 +59,74 @@ class Textbox(Element):
         if self.region is None or self.hidden:
             return
         # * Initialize the corners of the textbox
-        self.addstr(self.start.y, self.start.x,
-                    TextBoxCharacters.TOPLEFT.value, curses.color_pair(self.color))
-        self.addstr(self.start.y, self.end.x,
-                    TextBoxCharacters.TOPRIGHT.value, curses.color_pair(self.color))
-        self.addstr(self.end.y, self.start.x,
-                    TextBoxCharacters.BOTTOMLEFT.value, curses.color_pair(self.color))
-        self.addstr(self.end.y, self.end.x,
-                    TextBoxCharacters.BOTTOMRIGHT.value, curses.color_pair(self.color))
+        self.addstr(
+            self.start.y,
+            self.start.x,
+            TextBoxCharacters.TOPLEFT.value,
+            curses.color_pair(self.color),
+        )
+        self.addstr(
+            self.start.y,
+            self.end.x,
+            TextBoxCharacters.TOPRIGHT.value,
+            curses.color_pair(self.color),
+        )
+        self.addstr(
+            self.end.y,
+            self.start.x,
+            TextBoxCharacters.BOTTOMLEFT.value,
+            curses.color_pair(self.color),
+        )
+        self.addstr(
+            self.end.y,
+            self.end.x,
+            TextBoxCharacters.BOTTOMRIGHT.value,
+            curses.color_pair(self.color),
+        )
 
         # * Vertical lines
-        for iy in range(self.end.y-self.start.y):
+        for iy in range(self.end.y - self.start.y):
             if 0 < iy < self.end.y:
-                self.addstr(iy+self.start.y, self.start.x,
-                            TextBoxCharacters.VERTICAL.value, curses.color_pair(self.color))
                 self.addstr(
-                    iy+self.start.y, self.end.x,
-                    TextBoxCharacters.VERTICAL.value, curses.color_pair(self.color))
+                    iy + self.start.y,
+                    self.start.x,
+                    TextBoxCharacters.VERTICAL.value,
+                    curses.color_pair(self.color),
+                )
+                self.addstr(
+                    iy + self.start.y,
+                    self.end.x,
+                    TextBoxCharacters.VERTICAL.value,
+                    curses.color_pair(self.color),
+                )
 
         # * Horizontal lines
-        for ix in range(self.end.x-self.start.x):
+        for ix in range(self.end.x - self.start.x):
             if 0 < ix < self.end.x:
                 char = TextBoxCharacters.HORIZONTAL.value
-                self.addstr(self.start.y, ix+self.start.x,
-                            char, curses.color_pair(self.color))
                 self.addstr(
-                    self.end.y, ix+self.start.x,
-                    TextBoxCharacters.HORIZONTAL.value, curses.color_pair(self.color))
+                    self.start.y, ix + self.start.x, char, curses.color_pair(self.color)
+                )
+                self.addstr(
+                    self.end.y,
+                    ix + self.start.x,
+                    TextBoxCharacters.HORIZONTAL.value,
+                    curses.color_pair(self.color),
+                )
         if self.text == "":
             self.addstr(
-                self.start.y+1, self.start.x+2, self.placeholder, curses.color_pair(self.placeholder_color))
+                self.start.y + 1,
+                self.start.x + 2,
+                self.placeholder,
+                curses.color_pair(self.placeholder_color),
+            )
         else:
             text = self.display
             if len(text) > self.maxchars:
-                text = ".." + self.display[::-1][:self.maxchars-1][::-1]
+                text = ".." + self.display[::-1][: self.maxchars - 1][::-1]
             self.addstr(
-                self.start.y+1, self.start.x+2, text, curses.color_pair(self.color))
+                self.start.y + 1, self.start.x + 2, text, curses.color_pair(self.color)
+            )
 
     def click(self):
         """Focus the textbox and allow the user to type
@@ -105,29 +136,31 @@ class Textbox(Element):
         if self.region is None or self.hidden:
             return
         # calculate the starting cursor position based on the length of the text.
-        cursor = len(self.text) + \
-            1 if len(self.text) <= self.maxchars else self.maxchars+2
-        self.region.ui.cursor = Position(cursor+self.start.x+1, self.start.y+1)
+        cursor = (
+            len(self.text) + 1 if len(self.text) <= self.maxchars else self.maxchars + 2
+        )
+        self.region.ui.cursor = Position(cursor + self.start.x + 1, self.start.y + 1)
         self.region.ui.draw()
-        self.region.ui.window.move(
-            self.start.y+1, cursor+self.start.x+1)
+        self.region.ui.window.move(self.start.y + 1, cursor + self.start.x + 1)
         curses.curs_set(1)
         for data in self.__get_user_input(string=self.text, cursor=cursor):
             # Create the generator.
             self.text, self.display = data["content"], data["display"]
 
-            self.addstr(self.start.y+1, self.start.x + 2,
-                        self.display, self.color)
+            self.addstr(self.start.y + 1, self.start.x + 2, self.display, self.color)
             if data["cursor"] > 0:
-                self.region.ui.cursor = Position(data["cursor"]+self.start.x+1, self.start.y+1)
-                #curses.setsyx(self.start.y+1,data["cursor"]+self.start.x+1)
+                self.region.ui.cursor = Position(
+                    data["cursor"] + self.start.x + 1, self.start.y + 1
+                )
+                # curses.setsyx(self.start.y+1,data["cursor"]+self.start.x+1)
                 self.region.ui.window.move(
-                    self.start.y+1, data["cursor"]+self.start.x+1)
+                    self.start.y + 1, data["cursor"] + self.start.x + 1
+                )
             else:
                 curses.curs_set(0)
             self.region.ui.draw()
 
-    def __get_user_input(self, string: str = '', cursor: int = 0):
+    def __get_user_input(self, string: str = "", cursor: int = 0):
         """A generator for getting user input and compiling it to a string. backspace, enter, delete key,  and lost focus on click supported
 
         Args:
@@ -140,18 +173,25 @@ class Textbox(Element):
                 "content" > str: the content to display in the textbox
                 "cursor" > int: the cursor position
         """
-        currtime = time.time()*1000
+        currtime = time.time() * 1000
         while True:
-            if time.time()*1000 - currtime < 300:
+            if time.time() * 1000 - currtime < 300:
                 continue
-                
-            self.region.ui.cursor = Position(cursor+self.start.x+1, self.start.y+1)
-            
-            self.region.ui.window.move(
-                self.start.y+1, cursor+self.start.x+1)
+
+            self.region.ui.cursor = Position(
+                cursor + self.start.x + 1, self.start.y + 1
+            )
+
+            self.region.ui.window.move(self.start.y + 1, cursor + self.start.x + 1)
             key = self.region.ui.window.getch()
             if key in Textbox.ENTER:
-                yield {"display": ''.join(["*" for _ in string]) if self.password else string, "cursor": -1, "content": string}
+                yield {
+                    "display": "".join(["*" for _ in string])
+                    if self.password
+                    else string,
+                    "cursor": -1,
+                    "content": string,
+                }
                 if self.on_enter is not None:
                     self.on_enter(self)
                 return
@@ -163,11 +203,16 @@ class Textbox(Element):
             elif key in Textbox.BACKSPACE:
                 if len(string) > 0:
                     string = string[:-1]
-                    cursor = len(string)+1
-                    data = {"display": ''.join(
-                        ["*" for _ in string]) if self.password else string, "cursor": cursor, "content": string}
+                    cursor = len(string) + 1
+                    data = {
+                        "display": "".join(["*" for _ in string])
+                        if self.password
+                        else string,
+                        "cursor": cursor,
+                        "content": string,
+                    }
                     if len(string) > self.maxchars:
-                        cursor = self.maxchars+2
+                        cursor = self.maxchars + 2
 
                     yield data
             elif key == curses.KEY_MOUSE:
@@ -178,15 +223,26 @@ class Textbox(Element):
                     self.region.ui.get_clickable(position)
                     return
             else:
-                if chr(key) in strings.ascii_letters + strings.punctuation + strings.digits + " ":
+                if (
+                    chr(key)
+                    in strings.ascii_letters
+                    + strings.punctuation
+                    + strings.digits
+                    + " "
+                ):
                     if self.char_limit > 0 and len(string) >= self.char_limit:
                         continue
                     string += chr(key)
                     cursor += 1
-                    data = {"display": ''.join(
-                        ["*" for _ in string]) if self.password else string, "cursor": cursor, "content": string}
+                    data = {
+                        "display": "".join(["*" for _ in string])
+                        if self.password
+                        else string,
+                        "cursor": cursor,
+                        "content": string,
+                    }
                     if len(string) > self.maxchars:
-                        cursor = self.maxchars+2
+                        cursor = self.maxchars + 2
                     if self.on_input is not None:
                         self.on_input(self, chr(key))
                     yield data

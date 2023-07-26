@@ -48,5 +48,4 @@ class Text(Element):
         options = color_pair(self.color)
         if self.underlined:
             options += curses.A_UNDERLINE
-        self.addstr(self.start.y, self.start.x,
-                    self.text, options)
+        self.addstr(self.start.y, self.start.x, self.text, options)

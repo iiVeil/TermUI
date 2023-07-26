@@ -122,13 +122,15 @@ class UI:
     def get_clickable(self, position: Position):
         # I am sorry.
         for region in self.regions:
-            if region.inBounds(position):
-                for element in region.elements:
-                    if element.callback is not None:
-                        if element.in_bounds(position):
-                            UI.last_element_clicked = time.time()*1000
-                            element.click()
-                            return element
+            if not region.inBounds(position):
+                continue 
+            for element in region.elements:
+                if element.callback is None:
+                    continue
+                if element.in_bounds(position):
+                    UI.last_element_clicked = time.time()*1000
+                    element.click()
+                    return element
         return None
 
     def loop(self):

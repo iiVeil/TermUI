@@ -6,12 +6,13 @@ from .textbox import Textbox
 
 
 class UI:
-    """The main UI component
-    """
+    """The main UI component"""
+
     class CursesInterrupt(Exception):
         """Keyboard Interrupt within a curses input"""
+
         ...
-    
+
     screen_initialized = False
     last_element_clicked = 0
     clickable_cooldown = 300
@@ -20,8 +21,7 @@ class UI:
 
     @staticmethod
     def init_screen():
-        """Initialize the curses screen. This will happen the first time any UI is created. This also adds color support.
-        """
+        """Initialize the curses screen. This will happen the first time any UI is created. This also adds color support."""
         curses.curs_set(0)
         curses.start_color()
         curses.use_default_colors()
@@ -45,14 +45,15 @@ class UI:
 
         self.regions = []
         self.toolkits = []
-        
-        self.cursor = Position(0,0)
+
+        self.cursor = Position(0, 0)
         if not UI.screen_initialized:
             UI.init_screen()
 
     """
     This setter functions as the second half of deactivate and activate, it will hold the UI instance open until the new UI takes over
     """
+
     @property
     def active(self):
         return self._active
@@ -65,13 +66,11 @@ class UI:
             self.loop()
 
     def activate(self):
-        """Show the UI and begin its loop.
-        """
+        """Show the UI and begin its loop."""
         self.active = True
 
     def deactivate(self):
-        """Hide the UI and end its loop.
-        """
+        """Hide the UI and end its loop."""
         self.active = False
 
     def add_region(self, region: Region):
@@ -89,10 +88,10 @@ class UI:
 
     def add_toolkits(self, *args):
         """Add toolkits to the working UI, allowing proper closing of them.
-        
+
         Assuming the toolkit has a end() method. If the toolkit does not need to be cleaned up, there is no reason to add it here.
         """
-        
+
         for arg in args:
             self.toolkits.append(arg)
 
@@ -109,8 +108,7 @@ class UI:
         new_ui.activate()
 
     def resize(self):
-        """Resize the UI
-        """
+        """Resize the UI"""
         x, y = self.window.getmaxyx()[::-1]
         curses.curs_set(0)
         curses.resize_term(y, x)
@@ -120,15 +118,18 @@ class UI:
         self.draw()
 
     def get_clickable(self, position: Position):
-        # I am sorry.
         for region in self.regions:
-            if region.inBounds(position):
-                for element in region.elements:
-                    if element.callback is not None:
-                        if element.in_bounds(position):
-                            UI.last_element_clicked = time.time()*1000
-                            element.click()
-                            return element
+            if not region.inBounds(position):
+                continue
+
+            for element in region.elements:
+                if element.callback is None:
+                    continue
+
+                if element.in_bounds(position):
+                    UI.last_element_clicked = time.time() * 1000
+                    element.click()
+                    return element
         return None
 
     def loop(self):
@@ -140,7 +141,10 @@ class UI:
             event = self.window.getch()
             if event == curses.KEY_MOUSE:
                 _, mx, my, _, _ = curses.getmouse()
-                if time.time()*1000 - UI.last_element_clicked >= UI.clickable_cooldown:
+                if (
+                    time.time() * 1000 - UI.last_element_clicked
+                    >= UI.clickable_cooldown
+                ):
                     position = Position(mx, my)
                     element = self.get_clickable(position)
                     if type(element) not in [Textbox, type(None)]:
@@ -159,8 +163,8 @@ class UI:
 
     def set_curs(self):
         x, y = self.cursor.x, self.cursor.y
-        
-        curses.setsyx(y,x)
+
+        curses.setsyx(y, x)
 
     def draw(self):
         """

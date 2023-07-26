@@ -7,7 +7,6 @@ from .element import Element
 
 
 class Checkbox(Element):
-
     def __init__(self, checked: bool, position: Position, callback=lambda _: ()):
         super().__init__(position)
         self.checked = checked
@@ -58,17 +57,12 @@ class Checkbox(Element):
         color = self.colors[self.checked]
         options = color_pair(color)
 
-        checkbox = [
-            "[",
-            "x" if self.checked else " ",
-            "]"
-        ]
+        checkbox = ["[", "x" if self.checked else " ", "]"]
         if self.spacing:
             checkbox.insert(1, " ")
             checkbox.insert(3, " ")
 
-        self.addstr(self.start.y, self.start.x,
-                    "".join(checkbox), options)
+        self.addstr(self.start.y, self.start.x, "".join(checkbox), options)
 
     def click(self):
         """What happens when the checkbox is clicked

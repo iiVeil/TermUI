@@ -5,8 +5,8 @@ from .element import Element
 
 
 class Region:
-    """A area in a UI used to display elements
-    """
+    """A area in a UI used to display elements"""
+
     count = 0
 
     def __init__(self, title: str, position: Position, size: Position):
@@ -14,9 +14,9 @@ class Region:
         "The UI its contained in."
         self.start = position
         "The top left corner."
-        self.size = size-Position(1, 1)
+        self.size = size - Position(1, 1)
         "The length / width of the region as a Position object."
-        self.end = position + (size-Position(1, 1))
+        self.end = position + (size - Position(1, 1))
         "The bottom right corner."
         self.color = -1
         "The color of the region. Defaults to the UI color."
@@ -28,11 +28,9 @@ class Region:
         "Whether the region is draw at all. Defaults to true."
         self.elements = []
         "The elements in the region. Only manipulate this if you know what you are doing."
-        self.sOrigin = Position(
-            self.start.x+1, self.start.y+1)
+        self.sOrigin = Position(self.start.x + 1, self.start.y + 1)
         "The relative starting location (inside the top left corner.)"
-        self.eOrigin = Position(
-            self.end.x-1, self.end.y-1)
+        self.eOrigin = Position(self.end.x - 1, self.end.y - 1)
         "The relative ending location (inside the bottom right corner.)"
         self.calc_pack()
 
@@ -67,11 +65,10 @@ class Region:
     def calc_pack(self):
         """Recalculate the regions relative placement packing."""
         self.pack = {
-            "right": Position(
-                self.size.x+self.start.x+1, self.start.y),
-            "down": Position(self.start.x, self.start.y+self.size.y+1),
-            "up": Position(self.start.x, self.start.y-1),
-            "left": Position(self.start.x-1, self.start.y)
+            "right": Position(self.size.x + self.start.x + 1, self.start.y),
+            "down": Position(self.start.x, self.start.y + self.size.y + 1),
+            "up": Position(self.start.x, self.start.y - 1),
+            "left": Position(self.start.x - 1, self.start.y),
         }
 
     def draw(self):
@@ -86,35 +83,67 @@ class Region:
         # * Initialize the corners of the box
 
         if self.framed:
-            self.addstr(self.start.y, self.start.x,
-                        BoxCharacters.TOPLEFT.value, curses.color_pair(self.color))
-            self.addstr(self.start.y, self.end.x,
-                        BoxCharacters.TOPRIGHT.value, curses.color_pair(self.color))
-            self.addstr(self.end.y, self.start.x,
-                        BoxCharacters.BOTTOMLEFT.value, curses.color_pair(self.color))
-            self.addstr(self.end.y, self.end.x,
-                        BoxCharacters.BOTTOMRIGHT.value, curses.color_pair(self.color))
+            self.addstr(
+                self.start.y,
+                self.start.x,
+                BoxCharacters.TOPLEFT.value,
+                curses.color_pair(self.color),
+            )
+            self.addstr(
+                self.start.y,
+                self.end.x,
+                BoxCharacters.TOPRIGHT.value,
+                curses.color_pair(self.color),
+            )
+            self.addstr(
+                self.end.y,
+                self.start.x,
+                BoxCharacters.BOTTOMLEFT.value,
+                curses.color_pair(self.color),
+            )
+            self.addstr(
+                self.end.y,
+                self.end.x,
+                BoxCharacters.BOTTOMRIGHT.value,
+                curses.color_pair(self.color),
+            )
 
             # * Create vertical lines
-            for iy in range(self.end.y-self.start.y):
+            for iy in range(self.end.y - self.start.y):
                 if 0 < iy < self.end.y:
-                    self.addstr(iy+self.start.y, self.start.x,
-                                BoxCharacters.VERTICAL.value, curses.color_pair(self.color))
                     self.addstr(
-                        iy+self.start.y, self.end.x, BoxCharacters.VERTICAL.value, curses.color_pair(self.color))
+                        iy + self.start.y,
+                        self.start.x,
+                        BoxCharacters.VERTICAL.value,
+                        curses.color_pair(self.color),
+                    )
+                    self.addstr(
+                        iy + self.start.y,
+                        self.end.x,
+                        BoxCharacters.VERTICAL.value,
+                        curses.color_pair(self.color),
+                    )
 
             # * Create horizontal lines
             title_offset = 2
-            for ix in range(self.end.x-self.start.x):
+            for ix in range(self.end.x - self.start.x):
                 if 0 < ix < self.end.x:
                     char = BoxCharacters.HORIZONTAL.value
                     # * Add our title to our top horizontal line
-                    if title_offset < ix < len(self.text)+(title_offset+1):
-                        char = self.text[ix-(title_offset+1)]
-                    self.addstr(self.start.y, ix+self.start.x,
-                                char, curses.color_pair(self.color))
+                    if title_offset < ix < len(self.text) + (title_offset + 1):
+                        char = self.text[ix - (title_offset + 1)]
                     self.addstr(
-                        self.end.y, ix+self.start.x, BoxCharacters.HORIZONTAL.value, curses.color_pair(self.color))
+                        self.start.y,
+                        ix + self.start.x,
+                        char,
+                        curses.color_pair(self.color),
+                    )
+                    self.addstr(
+                        self.end.y,
+                        ix + self.start.x,
+                        BoxCharacters.HORIZONTAL.value,
+                        curses.color_pair(self.color),
+                    )
 
         # * Draw our elements into the region
         for element in self.elements:
@@ -142,7 +171,7 @@ class Region:
             string (str): The string to add
             options (int, optional): Other options: color, formatting, etc. Defaults to 0.
         """
-        if y >= curses.LINES-1 or x >= curses.COLS-1:
+        if y >= curses.LINES - 1 or x >= curses.COLS - 1:
             return
         self.ui.window.addstr(y, x, string, options)
 
@@ -168,7 +197,6 @@ class Region:
                 element.color = self.color
 
     def add_element(self, element: Element):
-
         self.elements.append(element)
         element.region = self
         if element.color == -1:
