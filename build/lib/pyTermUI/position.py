@@ -1,4 +1,3 @@
-
 import math
 
 
@@ -29,12 +28,12 @@ class Position:
 
     def __add__(self, other):
         if isinstance(other, Position):
-            return Position(self.x+other.x, self.y+other.y)
+            return Position(self.x + other.x, self.y + other.y)
         return self
 
     def __sub__(self, other):
         if isinstance(other, Position):
-            return Position(self.x-other.x, self.y-other.y)
+            return Position(self.x - other.x, self.y - other.y)
         return self
 
     def half(self):
@@ -43,4 +42,4 @@ class Position:
         Returns:
             Position: The calculated position, rounded down
         """
-        return Position(math.floor(self.x/2), math.floor(self.y/2))
+        return Position(math.floor(self.x / 2), math.floor(self.y / 2))

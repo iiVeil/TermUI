@@ -15,7 +15,7 @@ class Button(Element):
         "This property functions as a checkbox really. Defaults to False."
         self.highlight = "><"
         "The highlights around the text to make it look clickable. Defaults to >Text<"
-        self.size = Position(len(self.text)+2, 1) + Position(1, 1)
+        self.size = Position(len(self.text) + 2, 1) + Position(1, 1)
         "The calculated size of the button based on text and position."
         self.callback = callback
         "The method to run when the button is clicked. Sends the Button as an argument."
@@ -32,7 +32,7 @@ class Button(Element):
         if self.region is None:
             return
         self.text = text
-        self.size = Position(len(self.text)+2, 1) + Position(1, 1)
+        self.size = Position(len(self.text) + 2, 1) + Position(1, 1)
         self.end = self.start + self.size
 
     def draw(self) -> None:
@@ -43,44 +43,83 @@ class Button(Element):
         if self.region is None or self.hidden:
             return
         # * Initialize the corners of the button
-        self.addstr(self.start.y, self.start.x,
-                    ButtonCharacters.TOPLEFT.value, curses.color_pair(self.color))
-        self.addstr(self.start.y, self.end.x,
-                    ButtonCharacters.TOPRIGHT.value, curses.color_pair(self.color))
-        self.addstr(self.end.y, self.start.x,
-                    ButtonCharacters.BOTTOMLEFT.value, curses.color_pair(self.color))
-        self.addstr(self.end.y, self.end.x,
-                    ButtonCharacters.BOTTOMRIGHT.value, curses.color_pair(self.color))
+        self.addstr(
+            self.start.y,
+            self.start.x,
+            ButtonCharacters.TOPLEFT.value,
+            curses.color_pair(self.color),
+        )
+        self.addstr(
+            self.start.y,
+            self.end.x,
+            ButtonCharacters.TOPRIGHT.value,
+            curses.color_pair(self.color),
+        )
+        self.addstr(
+            self.end.y,
+            self.start.x,
+            ButtonCharacters.BOTTOMLEFT.value,
+            curses.color_pair(self.color),
+        )
+        self.addstr(
+            self.end.y,
+            self.end.x,
+            ButtonCharacters.BOTTOMRIGHT.value,
+            curses.color_pair(self.color),
+        )
 
         # * Vertical lines
-        for iy in range(self.end.y-self.start.y):
+        for iy in range(self.end.y - self.start.y):
             if 0 < iy < self.end.y:
-                self.addstr(iy+self.start.y, self.start.x,
-                            ButtonCharacters.VERTICAL.value, curses.color_pair(self.color))
                 self.addstr(
-                    iy+self.start.y, self.end.x,
-                    ButtonCharacters.VERTICAL.value, curses.color_pair(self.color))
+                    iy + self.start.y,
+                    self.start.x,
+                    ButtonCharacters.VERTICAL.value,
+                    curses.color_pair(self.color),
+                )
+                self.addstr(
+                    iy + self.start.y,
+                    self.end.x,
+                    ButtonCharacters.VERTICAL.value,
+                    curses.color_pair(self.color),
+                )
 
         # * Horizontal lines
-        for ix in range(self.end.x-self.start.x):
+        for ix in range(self.end.x - self.start.x):
             if 0 < ix < self.end.x:
                 char = ButtonCharacters.HORIZONTAL.value
-                self.addstr(self.start.y, ix+self.start.x,
-                            char, curses.color_pair(self.color))
                 self.addstr(
-                    self.end.y, ix+self.start.x,
-                    ButtonCharacters.HORIZONTAL.value, curses.color_pair(self.color))
+                    self.start.y, ix + self.start.x, char, curses.color_pair(self.color)
+                )
+                self.addstr(
+                    self.end.y,
+                    ix + self.start.x,
+                    ButtonCharacters.HORIZONTAL.value,
+                    curses.color_pair(self.color),
+                )
 
         if self.text is not "":
             # * Draw button text
             self.addstr(
-                self.start.y+1, self.start.x+2, self.text, curses.color_pair(self.color) + curses.A_UNDERLINE)
+                self.start.y + 1,
+                self.start.x + 2,
+                self.text,
+                curses.color_pair(self.color) + curses.A_UNDERLINE,
+            )
 
             # * Make it look clickable?
-            self.addstr(self.start.y+1,
-                        self.start.x+1, self.highlight[0], curses.color_pair(self.color))
-            self.addstr(self.start.y+1,
-                        self.end.x-1, self.highlight[1], curses.color_pair(self.color))
+            self.addstr(
+                self.start.y + 1,
+                self.start.x + 1,
+                self.highlight[0],
+                curses.color_pair(self.color),
+            )
+            self.addstr(
+                self.start.y + 1,
+                self.end.x - 1,
+                self.highlight[1],
+                curses.color_pair(self.color),
+            )
 
     def click(self):
         """What to do when a button is clicked

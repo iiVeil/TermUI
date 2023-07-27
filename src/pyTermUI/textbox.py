@@ -1,6 +1,6 @@
 import curses
 import time
-import string as strings
+from string import ascii_letters, punctuation, digits
 from enum import Enum
 from .position import Position
 from .element import Element
@@ -223,13 +223,7 @@ class Textbox(Element):
                     self.region.ui.get_clickable(position)
                     return
             else:
-                if (
-                    chr(key)
-                    in strings.ascii_letters
-                    + strings.punctuation
-                    + strings.digits
-                    + " "
-                ):
+                if chr(key) in ascii_letters + punctuation + digits + " ":
                     if self.char_limit > 0 and len(string) >= self.char_limit:
                         continue
                     string += chr(key)

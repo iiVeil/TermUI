@@ -45,7 +45,7 @@ class Element:
             string (str): The string to add
             options (int, optional): Other options: color, formatting, etc. Defaults to 0.
         """
-        if y >= curses.LINES-1 or x >= curses.COLS-1:
+        if y >= curses.LINES - 1 or x >= curses.COLS - 1:
             return
         self.region.ui.window.addstr(y, x, string, options)
 
@@ -53,23 +53,25 @@ class Element:
         """Center this element on the horizontal axis in its region."""
         if self.region == None:
             return
-        center = self.region.size.half() - Position(floor(self.size.x/2), 0)
+        center = self.region.size.half() - Position(floor(self.size.x / 2), 0)
         self.move(center)
-        
+
     def centerY(self):
         """Center this element on the vertical axis in its region."""
         if self.region == None:
             return
-        center = self.region.size.half() - Position(0, floor(self.size.y/2))
+        center = self.region.size.half() - Position(0, floor(self.size.y / 2))
         self.move(center)
-        
+
     def centerXY(self):
         """Center this element on both axi in its region."""
         if self.region == None:
             return
-        center = self.region.size.half() - Position(floor(self.size.x/2), floor(self.size.y/2))
+        center = self.region.size.half() - Position(
+            floor(self.size.x / 2), floor(self.size.y / 2)
+        )
         self.move(center)
-    
+
     def move(self, position: Position):
         """Move a element
 
@@ -93,15 +95,14 @@ class Element:
     def calc_pack(self):
         """Recalculate an elements relative placement packing."""
         self.pack = {
-            "right": Position(
-                self.size.x+self.start.x+1, self.start.y),
-            "down": Position(self.start.x, self.start.y+self.size.y+1),
-            "up": Position(self.start.x, self.start.y-1),
-            "left": Position(self.start.x-1, self.start.y)
+            "right": Position(self.size.x + self.start.x + 1, self.start.y),
+            "down": Position(self.start.x, self.start.y + self.size.y + 1),
+            "up": Position(self.start.x, self.start.y - 1),
+            "left": Position(self.start.x - 1, self.start.y),
         }
 
     def event_mask(self, *args):
-        """An event mask for allowing other elements click events to emulate a click on this element. 
+        """An event mask for allowing other elements click events to emulate a click on this element.
 
         This should only be used as a callback for another element.
 
